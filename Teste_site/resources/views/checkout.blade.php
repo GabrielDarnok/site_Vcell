@@ -3,7 +3,7 @@
 @section('title','checkout')
 
 @section('content')
-		<!-- HEADE -->
+		<!-- HEADER -->
 		<header>
 			<!-- TOP HEADER -->
 			<div id="top-header">
