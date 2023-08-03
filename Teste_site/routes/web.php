@@ -31,3 +31,5 @@ Route::get('/store',[Eventcontroller::class, 'store']);
 Route::get('/checkout',[Eventcontroller::class, 'checkout']);
 
 Route::get('/trace',[Eventcontroller::class, 'trace']);
+
+Route::get('/cadastrar',[Eventcontroller::class, 'cadastrar']);

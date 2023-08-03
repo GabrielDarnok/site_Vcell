@@ -42,4 +42,9 @@ class Eventcontroller extends Controller
 
         return view('trace');
     }
+
+    public function cadastrar(){
+
+        return view('cadastrar');
+    }
 }
