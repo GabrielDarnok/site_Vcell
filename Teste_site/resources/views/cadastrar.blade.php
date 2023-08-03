@@ -185,7 +185,7 @@
 				<div class="row">
 
 					<div class="col-md-7">
-						<!-- Billing Details -->
+						<!-- Billing Detail -->
 						<div class="billing-details">
 							<div class="section-title">
 								<h3 class="title">Cadastrar Produto</h3>
