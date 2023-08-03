@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\Eventcontroller;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', [Eventcontroller::class, 'index2']);
 
@@ -21,7 +22,7 @@ Route::get('/events/create',[Eventcontroller::class, 'create']);
 
 Route::get('/index',[Eventcontroller::class, 'index']);
 
-Route::get('/product',[Eventcontroller::class, 'product']);
+Route::get('/product',[ProductController::class, 'product']);
 
 Route::get('/products', [Eventcontroller::class, 'products']);
 

@@ -514,125 +514,35 @@
 							<h3 class="title">Produtos Relacionados</h3>
 						</div>
 					</div>
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="./img/product1.png" alt="">
-								<div class="product-label">
-									<span class="sale">-30%</span>
+					@foreach ($Product as $Products)
+						<!-- product -->					
+						<div class="col-md-3 col-xs-6">
+							<div class="product">
+								<div class="product-img">
+									<img src="./img/product1.png" alt="">
+									<div class="product-label">
+										<span class="sale">-30%</span>
+									</div>
 								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category">Categoria</p>
-								<h3 class="product-name"><a href="#">Tipo produto</a></h3>
-								<h4 class="product-price">R$149,90 <del class="product-old-price">R169,90</del></h4>
-								<div class="product-rating">
+								<div class="product-body">
+									<p class="product-category">Categoria</p>
+									<h3 class="product-name"><a href="#">{{ $Products->categoria }}</a></h3>
+									<h4 class="product-price">{{$Products->valor}} <del class="product-old-price">{{$Products->valor}}</del></h4>
+									<div class="product-rating">
+									</div>
+									<div class="product-btns">
+										<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos favoritos</span></button>
+										<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Comparar</span></button>
+										<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Revisão rápida</span></button>
+									</div>
 								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos favoritos</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Comparar</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Revisão rápida</span></button>
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
 								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
 							</div>
 						</div>
-					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="./img/product2.png" alt="">
-								<div class="product-label">
-									<span class="new">NOVO</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category">Categoria</p>
-								<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-								<h4 class="product-price">R$59,90 <del class="product-old-price">R$69,90</del></h4>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos favoritos</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i> <span class="tooltipp">Comparar</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Revisão rápida </span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<div class="clearfix visible-sm visible-xs"></div>
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="./img/product3.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Categoria</p>
-								<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-								<h4 class="product-price">R$49,90 <del class="product-old-price">R$54,90</del></h4>
-								<div class="product-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos favoritos</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Comparar</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Revisão rápida </span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="./img/product4.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Categoria</p>
-								<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-								<h4 class="product-price">R$189,90 <del class="product-old-price">R$209,90</del></h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos favoritos</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Comparar</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Revisão rápida </span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
+						<!-- /product -->
+					@endforeach
 				</div>
 				<!-- /row -->
 			</div>

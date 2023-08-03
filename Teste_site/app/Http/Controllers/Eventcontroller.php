@@ -28,12 +28,6 @@ class Eventcontroller extends Controller
 
         return view('index');
     }
-
-    public function product (){
-
-        return view('product');
-    }
-
     public function store (){
 
         return view('store');
