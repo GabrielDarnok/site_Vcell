@@ -143,7 +143,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="/index">Início</a></li>
 						<li class="active"><a href="/product">Produtos</a></li>
-						<li><a href="/store">Loja</a></li>
+						<li><a href="/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
 					</ul>
@@ -527,7 +527,7 @@
 								<div class="product-body">
 									<p class="product-category">Categoria</p>
 									<h3 class="product-name"><a href="#">{{ $Products->categoria }}</a></h3>
-									<h4 class="product-price">{{$Products->valor}} <del class="product-old-price">{{$Products->valor}}</del></h4>
+									<h4 class="product-price">{{number_format($Products->valor,2) }} <del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
 									<div class="product-rating">
 									</div>
 									<div class="product-btns">

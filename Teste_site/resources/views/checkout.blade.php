@@ -145,7 +145,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="/index">Início</a></li>
 						<li><a href="/product">Produtos</a></li>
-						<li><a href="/store">Loja</a></li>
+						<li><a href="/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li class="active"><a href="/checkout">Pedido</a></li>
 					</ul>
@@ -400,17 +400,6 @@
 								  document.body.removeChild(alerta);
 							  }
 						  </script>
-
-
-
-
-
-
-
-
-
-
-
 					</div>
 					<!-- /Order Details -->
 				</div>

@@ -142,7 +142,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="/index">Início</a></li>
 						<li><a href="/product">Produtos</a></li>
-						<li><a href="/store">Loja</a></li>
+						<li><a href="/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
 					</ul>
@@ -168,7 +168,7 @@
 							</div>
 							<div class="shop-body">
 								<h3>Tipo</h3>
-								<a href="/store" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="/store_product" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -182,7 +182,7 @@
 							</div>
 							<div class="shop-body">
 								<h3>Tipo</h3>
-								<a href="/store" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="/store_product" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -196,7 +196,7 @@
 							</div>
 							<div class="shop-body">
 								<h3>Tipo</h3>
-								<a href="/store" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="/store_product" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>

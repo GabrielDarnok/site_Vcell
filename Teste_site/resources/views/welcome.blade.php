@@ -4,8 +4,6 @@
 
 @section('content')
 
-@foreach ($Product as $Products)
-    <p>{{ $Products->categoria }} -- {{ $Products->descricao }} -- {{$Products->valor}}</p>
-@endforeach
+<p>Olá</p>
 
 @endsection

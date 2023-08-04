@@ -142,7 +142,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="/index">Início</a></li>
 						<li><a href="/product">Produtos</a></li>
-						<li class="active"><a href="/store">Loja</a></li>
+						<li class="active"><a href="/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
 					</ul>
@@ -324,38 +324,20 @@
 						<!-- aside Widget -->
 						<div class="aside">
 							<h3 class="aside-title">Melhor preço</h3>
+							@foreach ($Product as $Products)
+							@if ($Products->categoria == "Celular")
 							<div class="product-widget">
 								<div class="product-img">
 									<img src="./img/product1.png" alt="">
 								</div>
 								<div class="product-body">
-									<p class="product-category">Categoria</p>
-									<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-									<h4 class="product-price">R$149,90 <del class="product-old-price">R$169,90</del></h4>
+									<p class="product-category">{{ $Products->categoria }}</p>
+									<h3 class="product-name"><a href="#">{{ $Products->nome_produto }}</a></h3>
+									<h4 class="product-price">{{number_format($Products->valor,2) }} <del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
 								</div>
 							</div>
-
-							<div class="product-widget">
-								<div class="product-img">
-									<img src="./img/product2.png" alt="">
-								</div>
-								<div class="product-body">
-									<p class="product-category">Categoria</p>
-									<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-									<h4 class="product-price">R$59,90 <del class="product-old-price">R$69,90</del></h4>
-								</div>
-							</div>
-
-							<div class="product-widget">
-								<div class="product-img">
-									<img src="./img/product3.png" alt="">
-								</div>
-								<div class="product-body">
-									<p class="product-category">Categoria</p>
-									<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-									<h4 class="product-price">R$49,90 <del class="product-old-price">R$54,90</del></h4>
-								</div>
-							</div>
+							@endif
+							@endforeach
 						</div>
 						<!-- /aside Widget -->
 					</div>
@@ -388,7 +370,7 @@
 							</ul>
 						</div>
 						<!-- /store top filter -->
-
+						@foreach ($Product as $Products)
 						<!-- store products -->
 						<div class="row">
 							<!-- product -->
@@ -402,243 +384,15 @@
 										</div>
 									</div>
 									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-										<h4 class="product-price">R$149,90 <del class="product-old-price">R169,90</del></h4>
+										<p class="product-category">{{ $Products->categoria }}</p>
+										<h3 class="product-name"><a href="#">{{ $Products->nome_produto }}</a></h3>
+										<h4 class="product-price">{{number_format($Products->valor,2) }}<del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product2.png" alt="">
-										<div class="product-label">
-											<span class="new">Novo</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-										<h4 class="product-price">R$59,90 <del class="product-old-price">R$69,90</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
-							<div class="clearfix visible-sm visible-xs"></div>
-
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product3.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-										<h4 class="product-price">R$49,90 <del class="product-old-price">R$54,90</del></h4>
-										<div class="product-rating">
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
-							<div class="clearfix visible-lg visible-md"></div>
-
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product4.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-										<h4 class="product-price">R$189,90 <del class="product-old-price">R$209,90</del></h4>
-										<div class="product-rating">
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
-							<div class="clearfix visible-sm visible-xs"></div>
-
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product5.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-										<h4 class="product-price">R$144,90 <del class="product-old-price">R$169,90</del></h4>
-										<div class="product-rating">
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product6.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-										<h4 class="product-price">R$49,90 <del class="product-old-price">R$54,90</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
-							<div class="clearfix visible-lg visible-md visible-sm visible-xs"></div>
-
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product7.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-										<h4 class="product-price">R$39,90 <del class="product-old-price">R$44,90</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product8.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-										<h4 class="product-price">R$69,90 <del class="product-old-price">R$77,90</del></h4>
-										<div class="product-rating">
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
-							<div class="clearfix visible-sm visible-xs"></div>
-
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product9.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo produto</a></h3>
-										<h4 class="product-price">R$149,90 <del class="product-old-price">R$169,90</del></h4>
-										<div class="product-rating">
 										</div>
 										<div class="product-btns">
 											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
@@ -654,7 +408,7 @@
 							<!-- /product -->
 						</div>
 						<!-- /store products -->
-
+						@endforeach
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
 							<span class="store-qty">Mostrar 20-100 produtos</span>

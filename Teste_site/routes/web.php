@@ -13,23 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\Eventcontroller;
+use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Redirect;
 
-Route::get('/', [Eventcontroller::class, 'index2']);
+Route::get('/', [RedirectController::class, 'index2']);
 
-Route::get('/events/create',[Eventcontroller::class, 'create']);
+Route::get('/events/create',[RedirectController::class, 'create']);
 
-Route::get('/index',[Eventcontroller::class, 'index']);
+Route::get('/index',[RedirectController::class, 'index']);
 
 Route::get('/product',[ProductController::class, 'product']);
 
-Route::get('/products', [Eventcontroller::class, 'products']);
+Route::get('/store_product',[ProductController::class, 'store_product']);
 
-Route::get('/store',[Eventcontroller::class, 'store']);
+Route::get('/checkout',[RedirectController::class, 'checkout']);
 
-Route::get('/checkout',[Eventcontroller::class, 'checkout']);
+Route::get('/trace',[RedirectController::class, 'trace']);
 
-Route::get('/trace',[Eventcontroller::class, 'trace']);
+Route::get('/cadastrar',[RedirectController::class, 'cadastrar']);
 
-Route::get('/cadastrar',[Eventcontroller::class, 'cadastrar']);
+Route::post('/events', [RedirectController::class, 'store']);

@@ -145,7 +145,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="/index">Início</a></li>
 						<li><a href="/product">Produtos</a></li>
-						<li><a href="/store">Loja</a></li>
+						<li><a href="/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li class="active"><a href="/checkout">Pedido</a></li>
 					</ul>
@@ -183,97 +183,39 @@
 			<div class="container">
 				<!-- row -->
 				<div class="row">
-
 					<div class="col-md-7">
 						<!-- Billing Detail -->
 						<div class="billing-details">
 							<div class="section-title">
 								<h3 class="title">Cadastrar Produto</h3>
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="Primeiro nome" placeholder="Primeiro nome">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="Sobrenome" placeholder="Sobrenome">
-							</div>
-							<div class="form-group">
-								<input class="input" type="email" name="email" placeholder="Email">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="endereço" placeholder="endereço">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="cidade" placeholder="cidade">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="país" placeholder="país">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="CEP" placeholder="CEP">
-							</div>
-							<div class="form-group">
-								<input class="input" type="tel" name="Telefone" placeholder="Telefone">
-							</div>
-							<div class="form-group">
-								<div class="input-checkbox">
-									<input type="checkbox" id="create-account">
-									<label for="create-account">
-										<span></span>
-										Criar uma conta?
-									</label>
-									<div class="caption">
-										<p>Crie sua senha</p>
-										<input class="input" type="password" name="Senha" placeholder="Digite sua senha">
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- /Billing Details -->
-
-						<!-- Shiping Details -->
-						<div class="shiping-details">
-							<div class="section-title">
-								<h3 class="title">Endereço de envio</h3>
-							</div>
-							<div class="input-checkbox">
-								<input type="checkbox" id="shiping-address">
-								<label for="shiping-address">
-									<span></span>
-									O endereço é diferente?
-								</label>
-								<div class="caption">
+								<form action="/events" method="POST">
+									@csrf
 									<div class="form-group">
-										<input class="input" type="text" name="Primeio nome" placeholder="Primeiro nome">
+										<label for="title">Nome do Produto</label>
+										<input class="input" type="text" id="nome_produto" name="nome_produto" placeholder="Nome do produto..." required>
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="Sobrenome" placeholder="Sobrenome">
+										<label for="title">Categoria do Produto</label>
+										<select type="text" class="form-control "id="categoria" name="categoria" placeholder="Categoria do produto..." required>
+											<option value="Capa">Capa</option>
+											<option value="Fone">Fone de ouvido</option>
+											<option value="Pelicula">Pelicula</option>
+											<option value="Celular">Celular</option>
+										</select>
 									</div>
 									<div class="form-group">
-										<input class="input" type="email" name="email" placeholder="Email">
+										<label for="title">Descrição do Produto</label>
+										<textarea class="input" type="text" id="descricao" name="descricao" placeholder="Descrição..." required></textarea>
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="endereço" placeholder="endereço">
+										<label for="title">Valor do Produto</label>
+										<input class="input" type="text" id="valor" name="valor" pattern="^\d+(\.\d{1,2})?$" placeholder="Valor..." required>
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="cidade" placeholder="cidade">
+										<input type="submit" class="btn btn-primary" value="Cadastrar Produto">
 									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="país" placeholder="país">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="CEP" placeholder="CEP">
-									</div>
-									<div class="form-group">
-										<input class="input" type="tel" name="telefone" placeholder="telefone">
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- /Shiping Details -->
-
-						<!-- Order notes -->
-						<div class="order-notes">
-							<textarea class="input" placeholder="Anotações pedido"></textarea>
+								</form>
+							</div>	
 						</div>
 						<!-- /Order notes -->
 					</div>
