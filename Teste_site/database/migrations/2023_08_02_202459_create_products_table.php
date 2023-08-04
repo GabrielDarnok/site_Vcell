@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('categoria');
             $table->text('descricao');
             $table->float('valor');
+            $table->string('imagem_produto');
         });
     }
 

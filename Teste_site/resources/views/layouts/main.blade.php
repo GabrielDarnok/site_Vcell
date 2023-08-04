@@ -28,7 +28,12 @@
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
-        @yield ('content')
+		<main>
+					@if(session('msg'))
+						<p class="msg">{{ session('msg') }}</p>
+					@endif
+					@yield ('content')
+		</main>
         <footer id="footer">
 			<!-- top footer -->
 			<div class="section">

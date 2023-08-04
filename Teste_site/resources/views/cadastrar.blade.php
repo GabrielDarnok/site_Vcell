@@ -188,8 +188,12 @@
 						<div class="billing-details">
 							<div class="section-title">
 								<h3 class="title">Cadastrar Produto</h3>
-								<form action="/events" method="POST">
+								<form action="/events" method="POST" enctype="multipart/form-data">
 									@csrf
+									<div class="form-group">
+										<label for="image">Imagem do Produto</label>
+										<input class="input" type="file" id="imagem_produto" name="imagem_produto" required>
+									</div>
 									<div class="form-group">
 										<label for="title">Nome do Produto</label>
 										<input class="input" type="text" id="nome_produto" name="nome_produto" placeholder="Nome do produto..." required>

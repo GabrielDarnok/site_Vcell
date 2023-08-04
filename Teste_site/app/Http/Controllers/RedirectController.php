@@ -52,9 +52,21 @@ class RedirectController extends Controller
         $Products->descricao = $request->descricao;
         $Products->valor = $request->valor;
 
-        $Products->save();
-        sleep(2);
+        if($request->hasFile('imagem_produto') && $request->file('imagem_produto')->isValid()){
 
-        return view('/cadastrar');
+            $requestImage = $request->imagem_produto;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+        
+            $request->imagem_produto->move(public_path('img/product'), $imageName);
+
+            $Products->imagem_produto = $imageName;
+        }
+
+        $Products->save();
+
+        return view('/index')->with('msg','Item adicionado!');
     }
 }
