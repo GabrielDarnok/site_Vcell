@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','product')
+@section('title','product2')
 
 @section('content')
 		<!-- HEADER -->
@@ -30,7 +30,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="/index" class="logo">
-									<img src="./img/logo.png" alt="">
+									<img src="/img/logo.png" alt="">
 								</a>
 							</div>
 						</div>
@@ -81,7 +81,7 @@
 										<div class="cart-list">
 											<div class="product-widget">
 												<div class="product-img">
-													<img src="./img/product1.png" alt="">
+													<img src="/img/product1.png" alt="">
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
@@ -92,7 +92,7 @@
 
 											<div class="product-widget">
 												<div class="product-img">
-													<img src="./img/product2.png" alt="">
+													<img src="/img/product2.png" alt="">
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
@@ -188,19 +188,19 @@
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
-								<img src="./img/product1.png" alt="">
+								<img src="/img/product1.png" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/product2.png" alt="">
+								<img src="/img/product2.png" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/product3.png" alt="">
+								<img src="/img/product3.png" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="./img/product4.png" alt="">
+								<img src="/img/product4.png" alt="">
 							</div>
 						</div>
 					</div>
@@ -210,7 +210,7 @@
 					<div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs">
 							<div class="product-preview">
-								<img src="./img/product_front.png" alt="">
+								<img src="/img/product_front.png" alt="">
 							</div>
 
 							<div class="product-preview">
@@ -231,7 +231,7 @@
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name">Titulo produto</h2>
+							<h2 class="product-name">{{$Product->nome_produto}}</h2>
 							<div>
 								<div class="yellow">
 									<i class="fa fa-star"></i>
@@ -242,10 +242,10 @@
 								</div>
 							</div>
 							<div>
-								<h3 class="product-price">R$ 139,90 <del class="product-old-price">R$169,90</del></h3>
+								<h3 class="product-price">{{number_format($Product->valor,2)}} <del class="product-old-price">{{number_format((($Product->valor * 30)/100) + $Product->valor,2)}}</del></h3>
 								<span class="product-available"><b></b>Em estoque</b>. Envio imediato!</span>
 							</div>
-								<p>Descrição</p>
+								<p>{{$Product->descricao}}</p>
 							<div class="add-to-cart">
 								<div class="qty-label">
 									Quantidade
@@ -266,8 +266,7 @@
 
 							<ul class="product-links">
 								<li>Categoria:</li>
-								<li><a href="#">Tipo Produto</a></li>
-								<li><a href="#">Tipo Produto</a></li>
+								<li><a href="#">{{$Product->categoria}}</a></li>
 							</ul>
 
 							<ul class="product-links">
@@ -515,20 +514,20 @@
 							<h3 class="title">Produtos Relacionados</h3>
 						</div>
 					</div>
-					@foreach ($Product as $Products)
+					@foreach ($Product_list as $Products_list)
 						<!-- product -->					
 						<div class="col-md-3 col-xs-6">
 							<div class="product">
 								<div class="product-img">
-									<img src="./img/product/{{ $Products->imagem_produto }}" alt="">
+									<img src="/img/product/{{ $Products_list->imagem_produto }}" alt="">
 									<div class="product-label">
 										<span class="sale">-30%</span>
 									</div>
 								</div>
 								<div class="product-body">
 									<p class="product-category">Categoria</p>
-									<h3 class="product-name"><a href="#">{{ $Products->categoria }}</a></h3>
-									<h4 class="product-price">{{number_format($Products->valor,2) }} <del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
+									<h3 class="product-name"><a href="/events/{{ $Products_list->id }}">{{ $Products_list->categoria }}</a></h3>
+									<h4 class="product-price">{{number_format($Products_list->valor,2) }} <del class="product-old-price">{{number_format((($Products_list->valor * 30)/100) + $Products_list->valor,2)}}</del></h4>
 									<div class="product-rating">
 									</div>
 									<div class="product-btns">
@@ -587,10 +586,10 @@
 		</div>
 		<!-- /NEWSLETTER -->
 		<!-- jQuery Plugins -->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/slick.min.js"></script>
-		<script src="js/nouislider.min.js"></script>
-		<script src="js/jquery.zoom.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/slick.min.js"></script>
+		<script src="/js/nouislider.min.js"></script>
+		<script src="/js/jquery.zoom.min.js"></script>
+		<script src="/js/main.js"></script>
 @endsection

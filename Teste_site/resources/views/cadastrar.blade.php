@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','checkout')
+@section('title','cadastrar')
 
 @section('content')
 		<!-- HEADER -->

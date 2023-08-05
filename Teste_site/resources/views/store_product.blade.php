@@ -325,10 +325,10 @@
 						<div class="aside">
 							<h3 class="aside-title">Melhor preço</h3>
 							@foreach ($Product as $Products)
-							@if ($Products->categoria == "Celular")
+							@if ($Products->categoria == "Pelicula")
 							<div class="product-widget">
 								<div class="product-img">
-									<img src="./img/product1.png" alt="">
+									<img src="./img/product/{{ $Products->imagem_produto }}" alt="">
 								</div>
 								<div class="product-body">
 									<p class="product-category">{{ $Products->categoria }}</p>
@@ -377,7 +377,7 @@
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
 									<div class="product-img">
-										<img src="./img/product1.png" alt="">
+										<img src="./img/product/{{ $Products->imagem_produto }}" alt="">
 										<div class="product-label">
 											<span class="sale">-30%</span>
 											<span class="new">Novo</span>
@@ -385,7 +385,7 @@
 									</div>
 									<div class="product-body">
 										<p class="product-category">{{ $Products->categoria }}</p>
-										<h3 class="product-name"><a href="#">{{ $Products->nome_produto }}</a></h3>
+										<h3 class="product-name"><a href="/events/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
 										<h4 class="product-price">{{number_format($Products->valor,2) }}<del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>

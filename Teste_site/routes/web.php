@@ -21,6 +21,8 @@ Route::get('/', [RedirectController::class, 'index2']);
 
 Route::get('/events/create',[RedirectController::class, 'create']);
 
+Route::get('/events/{id}',[ProductController::class, 'show']);
+
 Route::get('/index',[RedirectController::class, 'index']);
 
 Route::get('/product',[ProductController::class, 'product']);
@@ -33,4 +35,4 @@ Route::get('/trace',[RedirectController::class, 'trace']);
 
 Route::get('/cadastrar',[RedirectController::class, 'cadastrar']);
 
-Route::post('/events', [RedirectController::class, 'store']);
+Route::post('/events', [ProductController::class, 'store']);
