@@ -143,7 +143,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="/index">Início</a></li>
 						<li class="active"><a href="/product">Produtos</a></li>
-						<li><a href="/store_product">Loja</a></li>
+						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
 					</ul>
@@ -515,33 +515,35 @@
 						</div>
 					</div>
 					@foreach ($Product_list as $Products_list)
-						<!-- product -->					
-						<div class="col-md-3 col-xs-6">
-							<div class="product">
-								<div class="product-img">
-									<img src="/img/product/{{ $Products_list->imagem_produto }}" alt="">
-									<div class="product-label">
-										<span class="sale">-30%</span>
+						@if ($Products_list->categoria == $Product->categoria)	
+							<!-- product -->					
+							<div class="col-md-3 col-xs-6">
+								<div class="product">
+									<div class="product-img">
+										<img src="/img/product/{{ $Products_list->imagem_produto }}" alt="">
+										<div class="product-label">
+											<span class="sale">-30%</span>
+										</div>
 									</div>
-								</div>
-								<div class="product-body">
-									<p class="product-category">Categoria</p>
-									<h3 class="product-name"><a href="/events/{{ $Products_list->id }}">{{ $Products_list->categoria }}</a></h3>
-									<h4 class="product-price">{{number_format($Products_list->valor,2) }} <del class="product-old-price">{{number_format((($Products_list->valor * 30)/100) + $Products_list->valor,2)}}</del></h4>
-									<div class="product-rating">
+									<div class="product-body">
+										<p class="product-category">Categoria</p>
+										<h3 class="product-name"><a href="/produto/{{ $Products_list->id }}">{{ $Products_list->categoria }}</a></h3>
+										<h4 class="product-price">{{number_format($Products_list->valor,2) }} <del class="product-old-price">{{number_format((($Products_list->valor * 30)/100) + $Products_list->valor,2)}}</del></h4>
+										<div class="product-rating">
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos favoritos</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Comparar</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Revisão rápida</span></button>
+										</div>
 									</div>
-									<div class="product-btns">
-										<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar aos favoritos</span></button>
-										<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Comparar</span></button>
-										<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Revisão rápida</span></button>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
 									</div>
-								</div>
-								<div class="add-to-cart">
-									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
 								</div>
 							</div>
-						</div>
-						<!-- /product -->
+							<!-- /product -->
+						@endif
 					@endforeach
 				</div>
 				<!-- /row -->

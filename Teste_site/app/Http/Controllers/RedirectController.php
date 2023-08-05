@@ -13,7 +13,7 @@ class RedirectController extends Controller
     }
 
     public function create(){
-        return view('events.create');
+        return view('produto.create');
     }
 
     public function index (){
@@ -37,6 +37,6 @@ class RedirectController extends Controller
 
     public function store_product(){
 
-        return view('store_product');
+        return view('loja.store_product');
     }
 }

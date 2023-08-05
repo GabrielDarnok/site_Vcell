@@ -30,7 +30,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="/index" class="logo">
-									<img src="./img/logo.png" alt="">
+									<img src="/img/logo.png" alt="">
 								</a>
 							</div>
 						</div>
@@ -80,7 +80,7 @@
 										<div class="cart-list">
 											<div class="product-widget">
 												<div class="product-img">
-													<img src="./img/product1.png" alt="">
+													<img src="/img/product1.png" alt="">
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
@@ -91,7 +91,7 @@
 
 											<div class="product-widget">
 												<div class="product-img">
-													<img src="./img/product2.png" alt="">
+													<img src="/img/product2.png" alt="">
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
@@ -142,7 +142,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="/index">Início</a></li>
 						<li><a href="/product">Produtos</a></li>
-						<li class="active"><a href="/store_product">Loja</a></li>
+						<li class="active"><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
 					</ul>
@@ -320,29 +320,31 @@
 							</div>
 						</div>
 						<!-- /aside Widget -->
-
-						<!-- aside Widget -->
-						<div class="aside">
-							<h3 class="aside-title">Melhor preço</h3>
-							@foreach ($Product as $Products)
-							@if ($Products->categoria == "Pelicula")
-							<div class="product-widget">
-								<div class="product-img">
-									<img src="./img/product/{{ $Products->imagem_produto }}" alt="">
+						@php
+							$sortedProducts = $Product->where('categoria', $busca)->sortBy('valor');
+							$cheapestProducts = $sortedProducts->take(2);
+						@endphp
+						@if (!empty($sortedProducts))
+							@foreach ($cheapestProducts as $Products)
+								<!-- aside Widget -->
+								<div class="aside">
+									<h3 class="aside-title">Melhor preço</h3>
+									<div class="product-widget">
+										<div class="product-img">
+											<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+										</div>
+										<div class="product-body">
+											<p class="product-category">{{ $Products->categoria }}</p>
+											<h3 class="product-name"><a href="#">{{ $Products->nome_produto }}</a></h3>
+											<h4 class="product-price">{{number_format($Products->valor,2) }} <del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
+										</div>
+									</div>
 								</div>
-								<div class="product-body">
-									<p class="product-category">{{ $Products->categoria }}</p>
-									<h3 class="product-name"><a href="#">{{ $Products->nome_produto }}</a></h3>
-									<h4 class="product-price">{{number_format($Products->valor,2) }} <del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
-								</div>
-							</div>
-							@endif
+								<!-- /aside Widget -->
 							@endforeach
-						</div>
-						<!-- /aside Widget -->
+						@endif	
 					</div>
 					<!-- /ASIDE -->
-
 					<!-- STORE -->
 					<div id="store" class="col-md-9">
 						<!-- store top filter -->
@@ -371,44 +373,103 @@
 						</div>
 						<!-- /store top filter -->
 						@foreach ($Product as $Products)
-						<!-- store products -->
-						<div class="row">
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="./img/product/{{ $Products->imagem_produto }}" alt="">
-										<div class="product-label">
-											<span class="sale">-30%</span>
-											<span class="new">Novo</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">{{ $Products->categoria }}</p>
-										<h3 class="product-name"><a href="/events/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
-										<h4 class="product-price">{{number_format($Products->valor,2) }}<del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-						</div>
-						<!-- /store products -->
+							@if ($Products->categoria == $busca || $Products->nome_produto == $busca)
+								@php
+									$existe = 1;
+									break;
+								@endphp
+							@else
+								@php
+									$existe = 0;
+								@endphp
+							@endif
 						@endforeach
+						@if (empty($busca))
+							@foreach ($Product as $Products)
+								<!-- store products -->
+								<div class="row">
+									<!-- product -->
+									<div class="col-md-4 col-xs-6">
+										<div class="product">
+											<div class="product-img">
+												<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+												<div class="product-label">
+													<span class="sale">-30%</span>
+													<span class="new">Novo</span>
+												</div>
+											</div>
+											<div class="product-body">
+												<p class="product-category">{{ $Products->categoria }}</p>
+												<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
+												<h4 class="product-price">{{number_format($Products->valor,2) }}<del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
+												<div class="product-rating">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+												</div>
+												<div class="product-btns">
+													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
+													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+												</div>
+											</div>
+											<div class="add-to-cart">
+												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
+											</div>
+										</div>
+									</div>
+									<!-- /product -->
+								</div>
+								<!-- /store products -->
+							@endforeach
+						@elseif($existe == 1)
+							@foreach ($Product as $Products)
+								@if ($Products->categoria == $busca || $Products->nome_produto == $busca)
+									<!-- store products -->
+									<div class="row">
+										<!-- product -->
+										<div class="col-md-4 col-xs-6">
+											<div class="product">
+												<div class="product-img">
+													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+													<div class="product-label">
+														<span class="sale">-30%</span>
+														<span class="new">Novo</span>
+													</div>
+												</div>
+												<div class="product-body">
+													<p class="product-category">{{ $Products->categoria }}</p>
+													<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
+													<h4 class="product-price">{{number_format($Products->valor,2) }}<del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
+													<div class="product-rating">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="product-btns">
+														<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
+														<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
+														<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+													</div>
+												</div>
+												<div class="add-to-cart">
+													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
+												</div>
+											</div>
+										</div>
+										<!-- /product -->
+									</div>
+									<!-- /store products -->
+								@endif
+							@endforeach
+						@elseif($existe == 0)
+							<p>PRODUTO NÃO ENCONTRADO</p>
+						@endif
+						
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
 							<span class="store-qty">Mostrar 20-100 produtos</span>
@@ -466,10 +527,10 @@
 		</div>
 		<!-- /NEWSLETTER -->
 		<!-- jQuery Plugins -->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/slick.min.js"></script>
-		<script src="js/nouislider.min.js"></script>
-		<script src="js/jquery.zoom.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/slick.min.js"></script>
+		<script src="/js/nouislider.min.js"></script>
+		<script src="/js/jquery.zoom.min.js"></script>
+		<script src="/js/main.js"></script>
 @endsection

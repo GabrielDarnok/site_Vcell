@@ -145,7 +145,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="/index">Início</a></li>
 						<li><a href="/product">Produtos</a></li>
-						<li><a href="/store_product">Loja</a></li>
+						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li class="active"><a href="/checkout">Pedido</a></li>
 					</ul>
@@ -188,7 +188,7 @@
 						<div class="billing-details">
 							<div class="section-title">
 								<h3 class="title">Cadastrar Produto</h3>
-								<form action="/events" method="POST" enctype="multipart/form-data">
+								<form action="/produto" method="POST" enctype="multipart/form-data">
 									@csrf
 									<div class="form-group">
 										<label for="image">Imagem do Produto</label>
@@ -201,10 +201,10 @@
 									<div class="form-group">
 										<label for="title">Categoria do Produto</label>
 										<select type="text" class="form-control "id="categoria" name="categoria" placeholder="Categoria do produto..." required>
-											<option value="Capa">Capa</option>
-											<option value="Fone">Fone de ouvido</option>
-											<option value="Pelicula">Pelicula</option>
-											<option value="Celular">Celular</option>
+											<option value="CAPA">Capa</option>
+											<option value="FONE">Fone de ouvido</option>
+											<option value="PELICULA">Pelicula</option>
+											<option value="CELULAR">Celular</option>
 										</select>
 									</div>
 									<div class="form-group">

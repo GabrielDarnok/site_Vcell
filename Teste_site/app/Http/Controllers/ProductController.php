@@ -18,17 +18,18 @@ class ProductController extends Controller
     }
 
     public function store_product(){
-
+        
+        $busca = strtoupper(request('search'));
         $Product = Products::all();
 
-        return view('store_product', ['Product'=>$Product]);
+        return view('loja.store_product', ['Product'=>$Product], ['busca'=>$busca]);
     }
 
     public function store (Request $request){
 
         $Products = new Products;
 
-        $Products->nome_produto = $request->nome_produto;
+        $Products->nome_produto = strtoupper($request->nome_produto);
         $Products->categoria = $request->categoria;
         $Products->descricao = $request->descricao;
         $Products->valor = $request->valor;
@@ -56,6 +57,6 @@ class ProductController extends Controller
         $Product = Products::findOrFail($id);
         $Product_list = Products::all();
 
-        return view('events.product2', ['Product'=>$Product], ['Product_list'=>$Product_list]);
+        return view('produto.product2', ['Product'=>$Product], ['Product_list'=>$Product_list]);
     }
 }

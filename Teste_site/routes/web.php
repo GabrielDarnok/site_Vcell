@@ -19,15 +19,15 @@ use Illuminate\Support\Facades\Redirect;
 
 Route::get('/', [RedirectController::class, 'index2']);
 
-Route::get('/events/create',[RedirectController::class, 'create']);
+Route::get('/produto/create',[RedirectController::class, 'create']);
 
-Route::get('/events/{id}',[ProductController::class, 'show']);
+Route::get('/produto/{id}',[ProductController::class, 'show']);
 
 Route::get('/index',[RedirectController::class, 'index']);
 
 Route::get('/product',[ProductController::class, 'product']);
 
-Route::get('/store_product',[ProductController::class, 'store_product']);
+Route::get('/loja/store_product',[ProductController::class, 'store_product']);
 
 Route::get('/checkout',[RedirectController::class, 'checkout']);
 
@@ -35,4 +35,4 @@ Route::get('/trace',[RedirectController::class, 'trace']);
 
 Route::get('/cadastrar',[RedirectController::class, 'cadastrar']);
 
-Route::post('/events', [ProductController::class, 'store']);
+Route::post('/produto', [ProductController::class, 'store']);

@@ -142,7 +142,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="/index">Início</a></li>
 						<li><a href="/product">Produtos</a></li>
-						<li><a href="/store_product">Loja</a></li>
+						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
 					</ul>
