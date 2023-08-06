@@ -372,6 +372,9 @@
 							</ul>
 						</div>
 						<!-- /store top filter -->
+						@php
+							$existe = 0;
+						@endphp
 						@foreach ($Product as $Products)
 							@if ($Products->categoria == $busca || $Products->nome_produto == $busca)
 								@php
@@ -425,24 +428,23 @@
 								<!-- /store products -->
 							@endforeach
 						@elseif($existe == 1)
-							@foreach ($Product as $Products)
-								@if ($Products->categoria == $busca || $Products->nome_produto == $busca)
+							@foreach ($Product_find as $Products_find)
 									<!-- store products -->
 									<div class="row">
 										<!-- product -->
 										<div class="col-md-4 col-xs-6">
 											<div class="product">
 												<div class="product-img">
-													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+													<img src="/img/product/{{ $Products_find->imagem_produto }}" alt="">
 													<div class="product-label">
 														<span class="sale">-30%</span>
 														<span class="new">Novo</span>
 													</div>
 												</div>
 												<div class="product-body">
-													<p class="product-category">{{ $Products->categoria }}</p>
-													<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
-													<h4 class="product-price">{{number_format($Products->valor,2) }}<del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
+													<p class="product-category">{{ $Products_find->categoria }}</p>
+													<h3 class="product-name"><a href="/produto/{{ $Products_find->id }}">{{ $Products_find->nome_produto }}</a></h3>
+													<h4 class="product-price">{{number_format($Products_find->valor,2) }}<del class="product-old-price">{{number_format((($Products_find->valor * 30)/100) + $Products_find->valor,2)}}</del></h4>
 													<div class="product-rating">
 														<i class="fa fa-star"></i>
 														<i class="fa fa-star"></i>
@@ -464,7 +466,6 @@
 										<!-- /product -->
 									</div>
 									<!-- /store products -->
-								@endif
 							@endforeach
 						@elseif($existe == 0)
 							<p>PRODUTO NÃO ENCONTRADO</p>

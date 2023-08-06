@@ -20,6 +20,7 @@ class ProductController extends Controller
     public function store_product(){
         
         $busca = strtoupper(request('search'));
+        $Product_find = Products::where('nome_produto' || 'categoria', 'LIKE', "%$busca%")->get();
         $Product = Products::all();
 
         return view('loja.store_product', ['Product'=>$Product], ['busca'=>$busca]);
