@@ -26,12 +26,12 @@ class ProductController extends Controller
 
     public function busca_product(){
         
-        $busca = strtoupper(request('search'));
+        $busca = request('search');
         $Product_find = Products::where('nome_produto', 'LIKE', "%$busca%")->orWhere('categoria', 'LIKE', "%$busca%")->orderBy('valor')->get();
         $cheapestProduct = $Product_find->take(2);
 
-        if ($Product_find->isEmpty()) {
-            $message = 'Nenhum produto encontrado com os critérios de busca.';
+        if ($Product_find->isEmpty() || empty($busca)) {
+            $message = 'Nenhum produto encontrado com os critérios de busca: ' . $busca;
             return view('busca.busca_product', ['message' => $message]);
         }
 

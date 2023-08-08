@@ -42,7 +42,7 @@
 								<form action="{{ route('busca.busca_product') }}">
 									<select class="input-select">
 										<option value="0">Todas categorias</option>
-										<option value="1">Capas</option>
+										<option value="CAPA">Capas</option>
 										<option value="2">Fones</option>
 										<option value="3">Celulares</option>
 										<option value="4">Peliculas</option>
@@ -167,8 +167,8 @@
 								<img src="./img/shop01.png" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Tipo</h3>
-								<a href="/store_product" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>Celulares</h3>
+								<a href="/busca/busca_product?search=celular" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -181,8 +181,8 @@
 								<img src="./img/shop03.png" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Tipo</h3>
-								<a href="/store_product" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>Fones de ouvido</h3>
+								<a href="/busca/busca_product?search=fone" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -195,8 +195,8 @@
 								<img src="./img/shop02.png" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Tipo</h3>
-								<a href="/store_product" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>Cabos de Carregadores</h3>
+								<a href="/busca/busca_product?search=pelicula" class="cta-btn">Adquira já <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
