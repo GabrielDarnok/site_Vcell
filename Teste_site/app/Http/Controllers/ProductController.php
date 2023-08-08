@@ -19,11 +19,23 @@ class ProductController extends Controller
 
     public function store_product(){
         
-        $busca = strtoupper(request('search'));
-        $Product_find = Products::where('nome_produto' || 'categoria', 'LIKE', "%$busca%")->get();
         $Product = Products::all();
 
-        return view('loja.store_product', ['Product'=>$Product], ['busca'=>$busca]);
+        return view('loja.store_product', ['Product'=>$Product]);
+    }
+
+    public function busca_product(){
+        
+        $busca = strtoupper(request('search'));
+        $Product_find = Products::where('nome_produto', 'LIKE', "%$busca%")->orWhere('categoria', 'LIKE', "%$busca%")->orderBy('valor')->get();
+        $cheapestProduct = $Product_find->take(2);
+
+        if ($Product_find->isEmpty()) {
+            $message = 'Nenhum produto encontrado com os critérios de busca.';
+            return view('busca.busca_product', ['message' => $message]);
+        }
+
+        return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct], ['Product_find'=>$Product_find]);
     }
 
     public function store (Request $request){

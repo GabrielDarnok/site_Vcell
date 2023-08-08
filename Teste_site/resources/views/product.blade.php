@@ -39,7 +39,7 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="header-search">
-								<form>
+								<form action="{{ route('busca.busca_product') }}">
 									<select class="input-select">
 										<option value="0">Todas categorias</option>
 										<option value="1">Capas</option>
@@ -49,9 +49,8 @@
 										<option value="5">Carregadores</option>
 										<option value="6">Diversos</option>
 									</select>
-									<input class="input" placeholder="Pesquise aqui">
+									<input class="input" name="search" placeholder="Pesquise aqui">
 									<button class="search-btn">Pesquisa</button>
-									
 								</form>
 							</div>
 						</div>
@@ -526,9 +525,9 @@
 									</div>
 								</div>
 								<div class="product-body">
-									<p class="product-category">Categoria</p>
-									<h3 class="product-name"><a href="#">{{ $Products->categoria }}</a></h3>
-									<h4 class="product-price">{{number_format($Products->valor,2) }} <del class="product-old-price">{{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
+									<p class="product-category">{{ $Products->categoria }}</p>
+									<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
+									<h4 class="product-price">R$ {{number_format($Products->valor,2) }} <del class="product-old-price"> R$ {{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
 									<div class="product-rating">
 									</div>
 									<div class="product-btns">

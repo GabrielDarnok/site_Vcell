@@ -39,7 +39,7 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="header-search">
-								<form>
+								<form action="{{ route('busca.busca_product') }}">
 									<select class="input-select">
 										<option value="0">Todas categorias</option>
 										<option value="1">Capas</option>
@@ -49,7 +49,7 @@
 										<option value="5">Carregadores</option>
 										<option value="6">Diversos</option>
 									</select>
-									<input class="input" placeholder="Pesquise aqui">
+									<input class="input" name="search" placeholder="Pesquise aqui">
 									<button class="search-btn">Pesquisa</button>
 								</form>
 							</div>
