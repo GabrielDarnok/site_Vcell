@@ -161,7 +161,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="breadcrumb-tree">
-							<li><a href="/index">Início</a></li>
+							<li><a href="/">Início</a></li>
 							<li><a href="/loja/store_product">Loja</a></li>
 							<li class="active">Produtos encontrados ({{ isset($Product_find) ? $Product_find->count() : 0 }})</li>
 						</ul>

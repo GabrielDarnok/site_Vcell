@@ -31,6 +31,6 @@ Route::get('/checkout',[RedirectController::class, 'checkout']);
 
 Route::get('/trace',[RedirectController::class, 'trace']);
 
-Route::get('/cadastrar',[RedirectController::class, 'cadastrar']);
+Route::get('/cadastrar_produto',[RedirectController::class, 'cadastrar']);
 
 Route::post('/index', [ProductController::class, 'store']);
