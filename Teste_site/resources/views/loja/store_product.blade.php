@@ -161,10 +161,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="breadcrumb-tree">
-							<li><a href="#">Início</a></li>
-							<li><a href="#">Todas categorias</a></li>
-							<li><a href="#">Tipo produto</a></li>
-							<li class="active">Tipo produto (227.490 resultados)</li>
+							<li><a href="/index">Início</a></li>
+							<li><a href="/loja/store_product">Loja</a></li>
+							<li class="active">Tipo produto ({{ isset($Product_find) ? $Product_find->count() : 0 }})</li>
 						</ul>
 					</div>
 				</div>
