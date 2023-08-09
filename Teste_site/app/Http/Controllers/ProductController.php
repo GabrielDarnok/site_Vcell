@@ -13,8 +13,9 @@ class ProductController extends Controller
     public function index (){
         
         $Product = Products::all();
+        $Product_date = Products::orderBy('created_at', 'desc')->get();
 
-        return view('index',['Product'=>$Product]);
+        return view('index',['Product'=>$Product], ['Product_date'=>$Product_date]);
     }
     
     #Fazendo a busca para verificar os produtos disponiveis
@@ -43,8 +44,6 @@ class ProductController extends Controller
     #Cadastro de produtos
     public function store (Request $request){
 
-        $Product = Products::all();
-
         $Products = new Products;
 
         $Products->nome_produto = strtoupper($request->nome_produto);
@@ -67,7 +66,7 @@ class ProductController extends Controller
 
         $Products->save();
 
-        return view('/index', ['Product'=>$Product])->with('msg','Item adicionado!', );
+        return redirect('/');
     }
 
     #Fazendo a busca do produto quando selecionado

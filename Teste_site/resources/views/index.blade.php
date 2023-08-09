@@ -234,20 +234,20 @@
 								<!-- tab -->
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
-										@foreach ($Product as $Products)
+										@foreach ($Product_date as $Products_date)
 											<!-- product -->
 											<div class="product">
 												<div class="product-img">
-													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+													<img src="/img/product/{{ $Products_date->imagem_produto }}" alt="">
 													<div class="product-label">
 														<span class="sale">-12%</span>
 														<span class="new">NOVO</span>
 													</div>
 												</div>
 												<div class="product-body">
-													<p class="product-category">{{ $Products->categoria }}</p>
-													<h3 class="product-name"><a href="/produto/{{ $Products->id }}"> {{ $Products->nome_produto }} </a></h3>
-													<h4 class="product-price">R$ {{number_format($Products->valor,2) }} <del class="product-old-price"> R$ {{number_format((($Products->valor * 12)/100) + $Products->valor,2)}}</del></h4>
+													<p class="product-category">{{ $Products_date->categoria }}</p>
+													<h3 class="product-name"><a href="/produto/{{ $Products_date->id }}"> {{ $Products_date->nome_produto }} </a></h3>
+													<h4 class="product-price">R$ {{number_format($Products_date->valor,2) }} <del class="product-old-price"> R$ {{number_format((($Products_date->valor * 12)/100) + $Products_date->valor,2)}}</del></h4>
 													<div class="product-rating">
 														<i class="fa fa-star"></i>
 														<i class="fa fa-star"></i>
