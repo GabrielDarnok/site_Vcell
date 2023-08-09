@@ -347,9 +347,9 @@
 							</ul>
 						</div>
 						<!-- /store top filter -->
-						@foreach ($Product as $Products)
-							<!-- store products -->
-							<div class="row">
+						<!-- store products -->
+						<div class="row">
+							@foreach ($Product as $Products)
 								<!-- product -->
 								<div class="col-md-4 col-xs-6">
 									<div class="product">
@@ -383,9 +383,9 @@
 									</div>
 								</div>
 								<!-- /product -->
-							</div>
-							<!-- /store products -->
-						@endforeach
+							@endforeach
+						</div>
+						<!-- /store products -->
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
 							<span class="store-qty">Mostrar 20-100 produtos</span>
