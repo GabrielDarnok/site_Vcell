@@ -161,11 +161,8 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="breadcrumb-tree">
-							<li><a href="/">Início</a></li>
-							<li><a href="#">Todas categorias</a></li>
-							<li><a href="#">Tipo produto</a></li>
-							<li><a href="#">Tipo produto</a></li>
-							<li class="active">Titulo Produto</li>
+							<li><a href="/index">Início</a></li>
+							<li><a href="/loja/store_product">Loja</a></li>
 						</ul>
 					</div>
 				</div>

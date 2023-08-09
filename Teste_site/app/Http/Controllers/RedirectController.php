@@ -28,7 +28,7 @@ class RedirectController extends Controller
     #Retornando a pagina Cadastrar ao usuario
     public function cadastrar(){
 
-        return view('cadastrar');
+        return view('produto.cadastrar');
     }
 
     #Retornando a pagina store_product ao usuario

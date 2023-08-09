@@ -366,49 +366,48 @@
 							</ul>
 						</div>
 						<!-- /store top filter -->
-						@if(isset($Product_find))
-							@foreach ($Product_find as $Products_find)
-								<!-- store products -->
-								<div class="row">
-									<!-- product -->
-									<div class="col-md-4 col-xs-6">
-										<div class="product">
-											<div class="product-img">
-												<img src="/img/product/{{ $Products_find->imagem_produto }}" alt="">
-												<div class="product-label">
-													<span class="sale">-30%</span>
-													<span class="new">Novo</span>
+						<div class="row">
+							@if(isset($Product_find))
+								@foreach ($Product_find as $Products_find)
+										<!-- product -->
+										<div class="col-md-4 col-xs-6">
+											<div class="product">
+												<div class="product-img">
+													<img src="/img/product/{{ $Products_find->imagem_produto }}" alt="">
+													<div class="product-label">
+														<span class="sale">-30%</span>
+														<span class="new">Novo</span>
+													</div>
 												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">{{ $Products_find->categoria }}</p>
-												<h3 class="product-name"><a href="/produto/{{ $Products_find->id }}">{{ $Products_find->nome_produto }}</a></h3>
-												<h4 class="product-price">R$ {{number_format($Products_find->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products_find->valor * 30)/100) + $Products_find->valor,2)}}</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
+												<div class="product-body">
+													<p class="product-category">{{ $Products_find->categoria }}</p>
+													<h3 class="product-name"><a href="/produto/{{ $Products_find->id }}">{{ $Products_find->nome_produto }}</a></h3>
+													<h4 class="product-price">R$ {{number_format($Products_find->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products_find->valor * 30)/100) + $Products_find->valor,2)}}</del></h4>
+													<div class="product-rating">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="product-btns">
+														<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
+														<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
+														<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+													</div>
 												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Adicionar nos favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+												<div class="add-to-cart">
+													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
 												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
 											</div>
 										</div>
-									</div>
-									<!-- /product -->
-								</div>
-								<!-- /store products -->
-							@endforeach
-						@elseif(isset($message))
-    						<p>{{ $message }}</p>
-						@endif
+										<!-- /product -->
+								@endforeach
+							@elseif(isset($message))
+								<p>{{ $message }}</p>
+							@endif
+						</div>
+						<!-- /store products -->
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
 							<span class="store-qty">Mostrar 20-100 produtos</span>

@@ -226,54 +226,55 @@
 						</div>
 					</div>
 					<!-- /section title -->
-
-					@foreach ($Product as $Products)
 					<!-- Products tab & slick -->
 					<div class="col-md-12">
+						<!--row-->
 						<div class="row">
 							<div class="products-tabs">
 								<!-- tab -->
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
-												<div class="product-label">
-													<span class="sale">-12%</span>
-													<span class="new">NOVO</span>
+										@foreach ($Product as $Products)
+											<!-- product -->
+											<div class="product">
+												<div class="product-img">
+													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+													<div class="product-label">
+														<span class="sale">-12%</span>
+														<span class="new">NOVO</span>
+													</div>
+												</div>
+												<div class="product-body">
+													<p class="product-category">{{ $Products->categoria }}</p>
+													<h3 class="product-name"><a href="/produto/{{ $Products->id }}"> {{ $Products->nome_produto }} </a></h3>
+													<h4 class="product-price">R$ {{number_format($Products->valor,2) }} <del class="product-old-price"> R$ {{number_format((($Products->valor * 12)/100) + $Products->valor,2)}}</del></h4>
+													<div class="product-rating">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="product-btns">
+														<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar nos favoritos</span></button>
+														<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
+														<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
+													</div>
+												</div>
+												<div class="add-to-cart">
+													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
 												</div>
 											</div>
-											<div class="product-body">
-												<p class="product-category">{{ $Products->categoria }}</p>
-												<h3 class="product-name"><a href="/produto/{{ $Products->id }}"> {{ $Products->nome_produto }} </a></h3>
-												<h4 class="product-price">R$ {{number_format($Products->valor,2) }} <del class="product-old-price"> R$ {{number_format((($Products->valor * 12)/100) + $Products->valor,2)}}</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar nos favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-											</div>
-										</div>
-										<!-- /product -->
+											<!-- /product -->
+										@endforeach
 									</div>
 								</div>
 								<!-- tab -->
 							</div>
 						</div>
+						<!--row-->
 					</div>
 					<!-- Products tab & slick -->
-					@endforeach
 				</div>
 				<!-- /row -->
 			</div>
@@ -350,14 +351,16 @@
 					</div>
 					<!-- /section title -->
 
-					@foreach ($Product as $Products)
-						<!-- Products tab & slick -->
-						<div class="col-md-12">
-							<div class="row">
-								<div class="products-tabs">
-									<!-- tab -->
-									<div id="tab2" class="tab-pane fade in active">
-										<div class="products-slick" data-nav="#slick-nav-2">
+					<!-- Products tab & slick -->
+					<div class="col-md-12">
+						<!--Row-->
+						<div class="row">
+							<!--Products-tab-->
+							<div class="products-tabs">
+								<!-- tab -->
+								<div id="tab2" class="tab-pane fade in active">
+									<div class="products-slick" data-nav="#slick-nav-2">
+										@foreach ($Product as $Products)
 											<!-- product -->
 											<div class="product">
 												<div class="product-img">
@@ -389,15 +392,17 @@
 												</div>
 											</div>
 											<!-- /product -->
-										</div>
-										<div id="slick-nav-2" class="products-slick-nav"></div>
+										@endforeach
 									</div>
-									<!-- /tab -->
+									<div id="slick-nav-2" class="products-slick-nav"></div>
 								</div>
+								<!-- /tab -->
 							</div>
+							<!--Products-tab-->
 						</div>
-						<!-- /Products tab & slick -->
-					@endforeach
+						<!--Row-->
+					</div>
+					<!-- /Products tab & slick -->
 				</div>
 				<!-- /row -->
 			</div>
