@@ -75,6 +75,6 @@ class ProductController extends Controller
         $Product = Products::findOrFail($id);
         $Product_list = Products::all();
 
-        return view('produto.product2', ['Product'=>$Product], ['Product_list'=>$Product_list]);
+        return view('produto.product', ['Product'=>$Product], ['Product_list'=>$Product_list]);
     }
 }
