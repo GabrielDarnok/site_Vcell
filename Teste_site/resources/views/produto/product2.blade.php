@@ -269,7 +269,7 @@
 								<div id="tab1" class="tab-pane fade in active">
 									<div class="row">
 										<div class="col-md-12">
-											<p>Descrição produto</p>
+											<p>{{$Product->descricao}}</p>
 										</div>
 									</div>
 								</div>
@@ -279,7 +279,7 @@
 								<div id="tab2" class="tab-pane fade in">
 									<div class="row">
 										<div class="col-md-12">
-											<p>Descrição produto</p>										
+											<p>{{$Product->descricao}}</p>										
 										</div>
 									</div>
 								</div>
