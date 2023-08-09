@@ -163,7 +163,7 @@
 						<ul class="breadcrumb-tree">
 							<li><a href="/index">Início</a></li>
 							<li><a href="/loja/store_product">Loja</a></li>
-							<li class="active">Tipo produto ({{ isset($Product_find) ? $Product_find->count() : 0 }})</li>
+							<li class="active">Tipo produto ({{ isset($Product) ? $Product->count() : 0 }})</li>
 						</ul>
 					</div>
 				</div>
