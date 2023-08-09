@@ -8,18 +8,14 @@ use App\Models\Products;
 
 class RedirectController extends Controller
 {
-    public function index2 () {
-        return view('welcome');
+    public function index () {
+        return view('index');
     }
 
     public function create(){
         return view('produto.create');
     }
-
-    public function index (){
-
-        return view('index');
-    }
+    
     public function checkout (){
 
         return view('checkout');

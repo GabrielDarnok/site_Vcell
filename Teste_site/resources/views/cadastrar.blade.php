@@ -30,7 +30,7 @@
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="/index" class="logo">
+								<a href="/" class="logo">
 									<img src="/img/logo.png" alt="">
 								</a>
 							</div>
@@ -141,7 +141,7 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li><a href="/index">Início</a></li>
+						<li><a href="/">Início</a></li>
 						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li class="active"><a href="/checkout">Pedido</a></li>
@@ -185,7 +185,7 @@
 						<div class="billing-details">
 							<div class="section-title">
 								<h3 class="title">Cadastrar Produto</h3>
-								<form action="/index3" method="POST" enctype="multipart/form-data">
+								<form action="/index" method="POST" enctype="multipart/form-data">
 									@csrf
 									<div class="form-group">
 										<label for="image">Imagem do Produto</label>

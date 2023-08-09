@@ -29,7 +29,7 @@
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="/index" class="logo">
+								<a href="/" class="logo">
 									<img src="/img/logo.svg" alt="">
 								</a>
 							</div>
@@ -140,7 +140,7 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="/index">Início</a></li>
+						<li class="active"><a href="/">Início</a></li>
 						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
