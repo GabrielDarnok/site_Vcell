@@ -423,28 +423,26 @@
 								<div id="slick-nav-3" class="products-slick-nav"></div>
 							</div>
 						</div>
-						@foreach ($Product as $Products)
-							@if ($Products->categoria == "CAPA")
-								<div class="products-widget-slick" data-nav="#slick-nav-3">
+						<div class="products-widget-slick" data-nav="#slick-nav-3">
+							@foreach ($Product as $Products)
+								@if ($Products->categoria == "CAPA")
 									<div>
-										<div>
-										<!-- product widget -->
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
-												</div>
-												<div class="product-body">
-													<p class="product-category">{{ $Products->categoria }}</p>
-													<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
-													<h4 class="product-price">R$ {{number_format($Products->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 10)/100) + $Products->valor,2)}}</del></h4>
-												</div>
+									<!-- product widget -->
+										<div class="product-widget">
+											<div class="product-img">
+												<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
 											</div>
-											<!-- /product widget -->
+											<div class="product-body">
+												<p class="product-category">{{ $Products->categoria }}</p>
+												<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
+												<h4 class="product-price">R$ {{number_format($Products->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 10)/100) + $Products->valor,2)}}</del></h4>
+											</div>
 										</div>
+										<!-- /product widget -->
 									</div>
-								</div>
-							@endif
-						@endforeach
+								@endif
+							@endforeach
+						</div>
 					</div>
 
 					<div class="col-md-4 col-xs-6">
@@ -454,31 +452,28 @@
 								<div id="slick-nav-4" class="products-slick-nav"></div>
 							</div>
 						</div>
-
-						@foreach ($Product as $Products)
-							@if ($Products->categoria == "CELULAR")
-								<div class="products-widget-slick" data-nav="#slick-nav-4">
+					
+						<div class="products-widget-slick" data-nav="#slick-nav-4">
+							@foreach ($Product as $Products)
+								@if ($Products->categoria == "CELULAR")
 									<div>
-										<div>
 										<!-- product widget -->
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
-												</div>
-												<div class="product-body">
-													<p class="product-category">{{ $Products->categoria }}</p>
-													<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
-													<h4 class="product-price">R$ {{number_format($Products->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 10)/100) + $Products->valor,2)}}</del></h4>
-												</div>
+										<div class="product-widget">
+											<div class="product-img">
+												<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
 											</div>
-											<!-- /product widget -->
+											<div class="product-body">
+												<p class="product-category">{{ $Products->categoria }}</p>
+												<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
+												<h4 class="product-price">R$ {{number_format($Products->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 10)/100) + $Products->valor,2)}}</del></h4>
+											</div>
 										</div>
+										<!-- /product widget -->
 									</div>
-								</div>
-							@endif
-						@endforeach
+								@endif
+							@endforeach
+						</div>
 					</div>
-
 					<div class="clearfix visible-sm visible-xs"></div>
 
 					<div class="col-md-4 col-xs-6">
@@ -493,20 +488,18 @@
 							@foreach ($Product as $Products)
 								@if ($Products->categoria == "FONE")
 									<div>
-										<div>
-										<!-- product widget -->
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
-												</div>
-												<div class="product-body">
-													<p class="product-category">{{ $Products->categoria }}</p>
-													<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
-													<h4 class="product-price">R$ {{number_format($Products->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 10)/100) + $Products->valor,2)}}</del></h4>
-												</div>
+									<!-- product widget -->
+										<div class="product-widget">
+											<div class="product-img">
+												<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
 											</div>
-											<!-- /product widget -->
+											<div class="product-body">
+												<p class="product-category">{{ $Products->categoria }}</p>
+												<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
+												<h4 class="product-price">R$ {{number_format($Products->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 10)/100) + $Products->valor,2)}}</del></h4>
+											</div>
 										</div>
+										<!-- /product widget -->
 									</div>
 								@endif
 							@endforeach
