@@ -141,7 +141,6 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="/index">Início</a></li>
-						<li class="active"><a href="/product">Produtos</a></li>
 						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
@@ -187,19 +186,7 @@
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
-								<img src="/img/product1.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="/img/product2.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="/img/product3.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="/img/product4.png" alt="">
+								<img src="/img/product/{{ $Product->imagem_produto }}" alt="">
 							</div>
 						</div>
 					</div>
@@ -209,19 +196,7 @@
 					<div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs">
 							<div class="product-preview">
-								<img src="/img/product_front.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product_back.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product_side.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product_several.png" alt="">
+								<img src="/img/product/{{ $Product->imagem_produto }}" alt="">
 							</div>
 						</div>
 					</div>

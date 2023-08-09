@@ -9,14 +9,15 @@ use PhpParser\Node\Stmt\Return_;
 
 class ProductController extends Controller
 {
-    public function product (){
-
-        $busca = request('search');
+    #Retornando os produtos para a pagina principal
+    public function index (){
+        
         $Product = Products::all();
 
-        return view('product', ['Product'=>$Product],['busca' => $busca]);
+        return view('index',['Product'=>$Product]);
     }
-
+    
+    #Fazendo a busca para verificar os produtos disponiveis
     public function store_product(){
         
         $Product = Products::all();
@@ -24,6 +25,7 @@ class ProductController extends Controller
         return view('loja.store_product', ['Product'=>$Product]);
     }
 
+    #Fazendo a busca do produto quando digitado na URL ou no input de busca
     public function busca_product(){
         
         $busca = request('search');
@@ -37,8 +39,11 @@ class ProductController extends Controller
 
         return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct], ['Product_find'=>$Product_find]);
     }
-
+    
+    #Cadastro de produtos
     public function store (Request $request){
+
+        $Product = Products::all();
 
         $Products = new Products;
 
@@ -62,9 +67,10 @@ class ProductController extends Controller
 
         $Products->save();
 
-        return view('/index')->with('msg','Item adicionado!');
+        return view('/index', ['Product'=>$Product])->with('msg','Item adicionado!', );
     }
 
+    #Fazendo a busca do produto quando selecionado
     public function show($id){
         
         $Product = Products::findOrFail($id);

@@ -141,7 +141,6 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="/index">Início</a></li>
-						<li><a href="/product">Produtos</a></li>
 						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
@@ -228,165 +227,53 @@
 					</div>
 					<!-- /section title -->
 
-					<!-- Products tab & slick -->
-					<div class="col-md-12">
-						<div class="row">
-							<div class="products-tabs">
-								<!-- tab -->
-								<div id="tab1" class="tab-pane active">
-									<div class="products-slick" data-nav="#slick-nav-1">
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product1.png" alt="">
-												<div class="product-label">
-													<span class="sale">-12%</span>
-													<span class="new">NOVO</span>
+					@foreach ($Product as $Products)
+						<!-- Products tab & slick -->
+						<div class="col-md-12">
+							<div class="row">
+								<div class="products-tabs">
+									<!-- tab -->
+									<div id="tab1" class="tab-pane active">
+										<div class="products-slick" data-nav="#slick-nav-1">
+											<!-- product -->
+											<div class="product">
+												<div class="product-img">
+													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+													<div class="product-label">
+														<span class="sale">-12%</span>
+														<span class="new">NOVO</span>
+													</div>
+												</div>
+												<div class="product-body">
+													<p class="product-category">{{ $Products->categoria }}</p>
+													<h3 class="product-name"><a href="/produto/{{ $Products->id }}"> {{ $Products->nome_produto }} </a></h3>
+													<h4 class="product-price">R$ {{number_format($Products->valor,2) }} <del class="product-old-price"> R$ {{number_format((($Products->valor * 12)/100) + $Products->valor,2)}}</del></h4>
+													<div class="product-rating">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="product-btns">
+														<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar nos favoritos</span></button>
+														<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
+														<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
+													</div>
+												</div>
+												<div class="add-to-cart">
+													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
 												</div>
 											</div>
-											<div class="product-body">
-												<p class="product-category">Categoria</p>
-												<h3 class="product-name"><a href="#">Titulo Produto </a></h3>
-												<h4 class="product-price">R$149,90 <del class="product-old-price">R$169,90</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar nos favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
-											</div>
+											<!-- /product -->
 										</div>
-										<!-- /product -->
-
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product2.png" alt="">
-												<div class="product-label">
-													<span class="new">NOVO</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Categoria</p>
-												<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-												<h4 class="product-price">R$59,90 <del class="product-old-price">R$69,90</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar no favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
-											</div>
-										</div>
-										<!-- /product -->
-
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product3.png" alt="">
-												<div class="product-label">
-													<span class="sale">-30%</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Categoria</p>
-												<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-												<h4 class="product-price">R$49,90 <del class="product-old-price">R$54,90</del></h4>
-												<div class="product-rating">
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar no favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
-											</div>
-										</div>
-										<!-- /product -->
-
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product4.png" alt="">
-											</div>
-											<div class="product-body">
-												<p class="product-category">Categoria</p>
-												<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-												<h4 class="product-price">R$189,90 <del class="product-old-price">R$209,90</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar no favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
-											</div>
-										</div>
-										<!-- /product -->
-
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product5.png" alt="">
-											</div>
-											<div class="product-body">
-												<p class="product-category">Categoria</p>
-												<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-												<h4 class="product-price">$144,90 <del class="product-old-price">R$169,90</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar no favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
-											</div>
-										</div>
-										<!-- /product -->
 									</div>
-									<div id="slick-nav-1" class="products-slick-nav"></div>
+									<!-- tab -->
 								</div>
-								<!-- /tab -->
 							</div>
 						</div>
-					</div>
-					<!-- Products tab & slick -->
+						<!-- Products tab & slick -->
+					@endforeach
 				</div>
 				<!-- /row -->
 			</div>
@@ -463,165 +350,54 @@
 					</div>
 					<!-- /section title -->
 
-					<!-- Products tab & slick -->
-					<div class="col-md-12">
-						<div class="row">
-							<div class="products-tabs">
-								<!-- tab -->
-								<div id="tab2" class="tab-pane fade in active">
-									<div class="products-slick" data-nav="#slick-nav-2">
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product6.png" alt="">
-												<div class="product-label">
-													<span class="sale">-30%</span>
-													<span class="new">NOVO</span>
+					@foreach ($Product as $Products)
+						<!-- Products tab & slick -->
+						<div class="col-md-12">
+							<div class="row">
+								<div class="products-tabs">
+									<!-- tab -->
+									<div id="tab2" class="tab-pane fade in active">
+										<div class="products-slick" data-nav="#slick-nav-2">
+											<!-- product -->
+											<div class="product">
+												<div class="product-img">
+													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+													<div class="product-label">
+														<span class="sale">-30%</span>
+														<span class="new">NOVO</span>
+													</div>
+												</div>
+												<div class="product-body">
+													<p class="product-category">{{$Products->categoria}}</p>
+													<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
+													<h4 class="product-price">R$ {{number_format($Products->valor,2) }} <del class="product-old-price"> R$ {{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
+													<div class="product-rating">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="product-btns">
+														<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar no favoritos</span></button>
+														<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">adicionar para comparar</span></button>
+														<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
+													</div>
+												</div>
+												<div class="add-to-cart">
+													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
 												</div>
 											</div>
-											<div class="product-body">
-												<p class="product-category">Categoria</p>
-												<h3 class="product-name"><a href="#">Tipo</a></h3>
-												<h4 class="product-price">R$49,90 <del class="product-old-price">R$54,90</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar no favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
-											</div>
+											<!-- /product -->
 										</div>
-										<!-- /product -->
-
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product7.png" alt="">
-												<div class="product-label">
-													<span class="new">NOVO</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Categoria</p>
-												<h3 class="product-name"><a href="#">Titulo Produto </a></h3>
-												<h4 class="product-price">R$39,90 <del class="product-old-price">R$44,90</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar no favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
-											</div>
-										</div>
-										<!-- /product -->
-
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product8.png" alt="">
-												<div class="product-label">
-													<span class="sale">-30%</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Category</p>
-												<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-												<h4 class="product-price">R$69,90 <del class="product-old-price">R$77,90</del></h4>
-												<div class="product-rating">
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar no favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
-											</div>
-										</div>
-										<!-- /product -->
-
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product9.png" alt="">
-											</div>
-											<div class="product-body">
-												<p class="product-category">Categoria</p>
-												<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-												<h4 class="product-price">R$149,90 <del class="product-old-price">R$169,90</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar no favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
-											</div>
-										</div>
-										<!-- /product -->
-
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product1.png" alt="">
-											</div>
-											<div class="product-body">
-												<p class="product-category">Categoria</p>
-												<h3 class="product-name"><a href="#">Titulo Produto </a></h3>
-												<h4 class="product-price">R$149,90 <del class="product-old-price">R$169,90</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">adicionar no favoritos</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">adicionar para comparar</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">ver rapidamente</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
-											</div>
-										</div>
-										<!-- /product -->
+										<div id="slick-nav-2" class="products-slick-nav"></div>
 									</div>
-									<div id="slick-nav-2" class="products-slick-nav"></div>
+									<!-- /tab -->
 								</div>
-								<!-- /tab -->
 							</div>
 						</div>
-					</div>
-					<!-- /Products tab & slick -->
+						<!-- /Products tab & slick -->
+					@endforeach
 				</div>
 				<!-- /row -->
 			</div>
@@ -642,90 +418,28 @@
 								<div id="slick-nav-3" class="products-slick-nav"></div>
 							</div>
 						</div>
-
-						<div class="products-widget-slick" data-nav="#slick-nav-3">
-							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product7.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$39,90 <del class="product-old-price">R$44,90</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product8.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$69,90 <del class="product-old-price">R$77,90</del></h4>
+						@foreach ($Product as $Products)
+							@if ($Products->categoria == "CAPA")
+								<div class="products-widget-slick" data-nav="#slick-nav-3">
+									<div>
+										<div>
+										<!-- product widget -->
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+												</div>
+												<div class="product-body">
+													<p class="product-category">{{ $Products->categoria }}</p>
+													<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
+													<h4 class="product-price">R$ {{number_format($Products->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 10)/100) + $Products->valor,2)}}</del></h4>
+												</div>
+											</div>
+											<!-- /product widget -->
+										</div>
 									</div>
 								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product9.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$149,90 <del class="product-old-price">R$169,90</del></h4>
-									</div>
-								</div>
-								<!-- product widget -->
-							</div>
-
-							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product1.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$149,90 <del class="product-old-price">R$169,90</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product2.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$74,90 <del class="product-old-price">R$83,90</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product3.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$49,90 <del class="product-old-price">R$54,90</del></h4>
-									</div>
-								</div>
-								<!-- product widget -->
-							</div>
-						</div>
+							@endif
+						@endforeach
 					</div>
 
 					<div class="col-md-4 col-xs-6">
@@ -736,89 +450,28 @@
 							</div>
 						</div>
 
-						<div class="products-widget-slick" data-nav="#slick-nav-4">
-							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product4.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$189,90 <del class="product-old-price">R$209,90</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product5.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$144,90 <del class="product-old-price">R$169,90</del></h4>
+						@foreach ($Product as $Products)
+							@if ($Products->categoria == "CELULAR")
+								<div class="products-widget-slick" data-nav="#slick-nav-4">
+									<div>
+										<div>
+										<!-- product widget -->
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+												</div>
+												<div class="product-body">
+													<p class="product-category">{{ $Products->categoria }}</p>
+													<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
+													<h4 class="product-price">R$ {{number_format($Products->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 10)/100) + $Products->valor,2)}}</del></h4>
+												</div>
+											</div>
+											<!-- /product widget -->
+										</div>
 									</div>
 								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product6.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$49,90 <del class="product-old-price">R$54,90</del></h4>
-									</div>
-								</div>
-								<!-- product widget -->
-							</div>
-
-							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product7.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$39,90 <del class="product-old-price">R$44,90</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product8.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$69,90 <del class="product-old-price">R$77,90</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product9.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$149,90 <del class="product-old-price">R$169,90</del></h4>
-									</div>
-								</div>
-								<!-- product widget -->
-							</div>
-						</div>
+							@endif
+						@endforeach
 					</div>
 
 					<div class="clearfix visible-sm visible-xs"></div>
@@ -832,90 +485,28 @@
 						</div>
 
 						<div class="products-widget-slick" data-nav="#slick-nav-5">
-							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product1.png" alt="">
+							@foreach ($Product as $Products)
+								@if ($Products->categoria == "FONE")
+									<div>
+										<div>
+										<!-- product widget -->
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="/img/product/{{ $Products->imagem_produto }}" alt="">
+												</div>
+												<div class="product-body">
+													<p class="product-category">{{ $Products->categoria }}</p>
+													<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
+													<h4 class="product-price">R$ {{number_format($Products->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 10)/100) + $Products->valor,2)}}</del></h4>
+												</div>
+											</div>
+											<!-- /product widget -->
+										</div>
 									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$149,90 <del class="product-old-price">R$169,90</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product2.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$74,90 <del class="product-old-price">R$83,90</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product3.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$49,90 <del class="product-old-price">R$54,90</del></h4>
-									</div>
-								</div>
-								<!-- product widget -->
-							</div>
-
-							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product4.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$189,90 <del class="product-old-price">R$209,90</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product5.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$144,90 <del class="product-old-price">R$169,90</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product6.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Categoria</p>
-										<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-										<h4 class="product-price">R$49,90 <del class="product-old-price">R$54,90</del></h4>
-									</div>
-								</div>
-								<!-- product widget -->
-							</div>
+								@endif
+							@endforeach
 						</div>
 					</div>
-
 				</div>
 				<!-- /row -->
 			</div>

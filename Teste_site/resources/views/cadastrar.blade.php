@@ -142,7 +142,6 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="/index">Início</a></li>
-						<li><a href="/product">Produtos</a></li>
 						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li class="active"><a href="/checkout">Pedido</a></li>
@@ -186,7 +185,7 @@
 						<div class="billing-details">
 							<div class="section-title">
 								<h3 class="title">Cadastrar Produto</h3>
-								<form action="/produto" method="POST" enctype="multipart/form-data">
+								<form action="/index3" method="POST" enctype="multipart/form-data">
 									@csrf
 									<div class="form-group">
 										<label for="image">Imagem do Produto</label>
