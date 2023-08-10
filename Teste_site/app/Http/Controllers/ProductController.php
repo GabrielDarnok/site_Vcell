@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Models\Products;
+use App\Models\User;
 use PhpParser\Node\Stmt\Return_;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -46,7 +48,7 @@ class ProductController extends Controller
 
         $Products = new Products;
 
-        $Products->nome_produto = strtoupper($request->nome_produto);
+        $Products->nome_produto = $request->nome_produto;
         $Products->categoria = $request->categoria;
         $Products->descricao = $request->descricao;
         $Products->valor = $request->valor;
@@ -63,6 +65,9 @@ class ProductController extends Controller
 
             $Products->imagem_produto = $imageName;
         }
+        
+        $user = auth()->user();
+        $Products->user_id = $user->id;
 
         $Products->save();
 
@@ -70,11 +75,32 @@ class ProductController extends Controller
     }
 
     #Fazendo a busca do produto quando selecionado
-    public function show($id){
+    public function show_products($id){
         
         $Product = Products::findOrFail($id);
         $Product_list = Products::all();
 
         return view('produto.product', ['Product'=>$Product], ['Product_list'=>$Product_list]);
+    }
+
+    public function show_user($id)
+    {
+        $user = User::findOrFail($id);
+
+        if (Gate::allows('view', $user)) {
+            return view('user.usuario', ['user' => $user]);
+        }
+
+        abort(403); // Acesso não autorizado
+    }
+
+
+
+    public function carrinho(){
+        
+        $Products = new Products;
+        
+        $user = auth()->user();
+        $Products->user_id = $user->id;
     }
 }

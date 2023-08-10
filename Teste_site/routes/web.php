@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Redirect;
 
 Route::get('/produto/create',[RedirectController::class, 'create']);
 
-Route::get('/produto/{id}',[ProductController::class, 'show']);
+Route::get('/produto/{id}',[ProductController::class, 'show_products']);
 
 Route::get('/',[ProductController::class, 'index']);
 
@@ -31,7 +31,7 @@ Route::get('/checkout',[RedirectController::class, 'checkout']);
 
 Route::get('/trace',[RedirectController::class, 'trace']);
 
-Route::get('/cadastrar_produto',[RedirectController::class, 'cadastrar']);
+Route::get('/cadastrar_produto',[RedirectController::class, 'cadastrar'])->middleware('auth');
 
 Route::post('/index', [ProductController::class, 'store']);
 
@@ -44,3 +44,5 @@ Route::middleware([
         return redirect('/');
     })->name('index');
 });
+
+Route::middleware('auth')->get('/user/{id}', [ProductController::class, 'show_user']);

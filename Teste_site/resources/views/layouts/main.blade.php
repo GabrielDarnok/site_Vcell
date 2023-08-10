@@ -41,7 +41,7 @@
 					<ul class="header-links pull-right">
 						@auth
 						<li>
-							<a href="#"><i class="fa fa-user-o"></i>Meu perfil</a>
+							<a href="/user/{{ auth()->user()->id }}"><i class="fa fa-user-o"></i>Meu perfil</a>
 						</li>
 						<li>
 							<form action="/logout" method="POST">
