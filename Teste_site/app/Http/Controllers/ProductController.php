@@ -83,19 +83,6 @@ class ProductController extends Controller
         return view('produto.product', ['Product'=>$Product], ['Product_list'=>$Product_list]);
     }
 
-    public function show_user($id)
-    {
-        $user = User::findOrFail($id);
-
-        if (Gate::allows('view', $user)) {
-            return view('user.usuario', ['user' => $user]);
-        }
-
-        abort(403); // Acesso não autorizado
-    }
-
-
-
     public function carrinho(){
         
         $Products = new Products;

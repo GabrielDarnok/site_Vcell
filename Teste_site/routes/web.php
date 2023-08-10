@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Redirect;
 
 Route::get('/produto/create',[RedirectController::class, 'create']);
@@ -45,4 +46,4 @@ Route::middleware([
     })->name('index');
 });
 
-Route::middleware('auth')->get('/user/{id}', [ProductController::class, 'show_user']);
+Route::middleware('auth')->get('/user/{id}', [UserController::class, 'show_user']);
