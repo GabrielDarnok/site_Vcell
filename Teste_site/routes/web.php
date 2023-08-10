@@ -34,3 +34,13 @@ Route::get('/trace',[RedirectController::class, 'trace']);
 Route::get('/cadastrar_produto',[RedirectController::class, 'cadastrar']);
 
 Route::post('/index', [ProductController::class, 'store']);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
