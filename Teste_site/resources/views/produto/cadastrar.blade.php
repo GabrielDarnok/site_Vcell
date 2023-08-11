@@ -73,6 +73,7 @@
 											<option value="FONE">Fone de ouvido</option>
 											<option value="PELICULA">Pelicula</option>
 											<option value="CELULAR">Celular</option>
+											<option value="COMBO">Combo</option>
 										</select>
 									</div>
 									<div class="form-group">
