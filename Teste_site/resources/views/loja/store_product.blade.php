@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','store')
+@section('title','store_product')
 
 @section('content')
 

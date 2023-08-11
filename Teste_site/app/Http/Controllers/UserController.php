@@ -16,6 +16,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        #Condição que verifica se o usuario que está acessando a view  tem o mesmo ID do usuario autenticado
         if (Gate::allows('view', $user)) {
             return view('user.usuario', ['user' => $user]);
         }

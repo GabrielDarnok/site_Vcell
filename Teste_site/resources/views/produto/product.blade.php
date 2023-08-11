@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','product2')
+@section('title','product')
 
 @section('content')
 		<!-- NAVIGATION -->

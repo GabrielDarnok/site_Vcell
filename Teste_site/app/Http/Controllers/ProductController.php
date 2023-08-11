@@ -83,6 +83,7 @@ class ProductController extends Controller
         return view('produto.product', ['Product'=>$Product], ['Product_list'=>$Product_list]);
     }
 
+    #Retornando a lista de produtos ao admin
     public function list(){
         
         $Product = Products::all();
@@ -90,6 +91,7 @@ class ProductController extends Controller
         return view('produto.product_list',['Product'=>$Product]);
     }
 
+    #Interação que adiciona itens no carrinho
     public function carrinho(){
         
         $Products = new Products;
