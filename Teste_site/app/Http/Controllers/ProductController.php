@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
-    #Retornando os produtos para a pagina principal
+    #Retornando os produtos para a pagina principal index
     public function index (){
         
         $Product = Products::all();
