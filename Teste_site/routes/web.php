@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Models\Products;
 use Illuminate\Support\Facades\Redirect;
 
 Route::get('/produto/create',[RedirectController::class, 'create']);
@@ -47,3 +48,5 @@ Route::middleware([
 });
 
 Route::middleware('auth')->get('/user/{id}', [UserController::class, 'show_user']);
+
+Route::middleware('auth')->get('/cadastro_lista', [ProductController::class, 'list']);

@@ -83,6 +83,13 @@ class ProductController extends Controller
         return view('produto.product', ['Product'=>$Product], ['Product_list'=>$Product_list]);
     }
 
+    public function list(){
+        
+        $Product = Products::all();
+
+        return view('produto.product_list',['Product'=>$Product]);
+    }
+
     public function carrinho(){
         
         $Products = new Products;
