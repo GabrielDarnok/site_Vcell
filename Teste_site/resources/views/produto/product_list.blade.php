@@ -26,7 +26,14 @@
                         <td><a href="/produto/{{ $Products->id }}">{{$Products->nome_produto}}</td>
                         <td>{{$Products->categoria}}</td>
                         <td>{{$Products->valor}}</td>
-                        <td><a href="#"> Editar </a> <a href="#"> Deletar </a></td>
+                        <td>
+                            <a href="#" class="btn btn-info edit-btn"><ion-icon name="create-outline"> Editar </ion-icon></a> 
+                            <form action="/produto_lista/{{ $Products->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger delete-btn"> <ion-icon name="trash-outline"> DELETAR </ion-icon></button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

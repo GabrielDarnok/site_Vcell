@@ -50,3 +50,5 @@ Route::middleware([
 Route::middleware('auth')->get('/user/{id}', [UserController::class, 'show_user']);
 
 Route::middleware('auth')->get('/produto_lista', [ProductController::class, 'list']);
+
+Route::delete('/produto_lista/{id}',[ProductController::class, 'destroy']);

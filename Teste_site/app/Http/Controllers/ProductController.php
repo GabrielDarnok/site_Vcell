@@ -99,4 +99,12 @@ class ProductController extends Controller
         $user = auth()->user();
         $Products->user_id = $user->id;
     }
+
+    #Deletando produto do bd
+    public function destroy($id){
+        
+        $Product = Products::findOrFail($id)->delete();
+        
+        return redirect('/produto_lista')->with('msg',"Evento exclido com sucesso");
+    }
 }
