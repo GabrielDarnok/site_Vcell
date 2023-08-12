@@ -105,6 +105,6 @@ class ProductController extends Controller
         
         $Product = Products::findOrFail($id)->delete();
         
-        return redirect('/produto_lista')->with('msg',"Evento exclido com sucesso");
+        return redirect('/produto_lista')->with('msg',"Evento excluido com sucesso");
     }
 }
