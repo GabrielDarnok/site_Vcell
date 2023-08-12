@@ -71,7 +71,7 @@ class ProductController extends Controller
 
         $Products->save();
 
-        return redirect('/');
+        return redirect('/')->with('msg',"Produto adicionado com sucesso");
     }
 
     #Fazendo a busca do produto quando selecionado
@@ -105,6 +105,6 @@ class ProductController extends Controller
         
         $Product = Products::findOrFail($id)->delete();
         
-        return redirect('/produto_lista')->with('msg',"Evento excluido com sucesso");
+        return redirect('/produto_lista')->with('msg',"Produto adicionado com sucesso");
     }
 }
