@@ -107,4 +107,19 @@ class ProductController extends Controller
         
         return redirect('/produto_lista')->with('msg',"Produto adicionado com sucesso");
     }
+
+    #Editando um produto cadastrado
+    public function edit($id){
+
+        $Product = Products::findOrFail($id);
+
+        return view('produto.edit', ['Product'=>$Product]);
+    }
+    #Salvando a edição do produto
+    public function update(Request $request){
+
+        Products::findOrFail($request->id)->update($request->all());
+
+        return redirect('/')->with('msg',"Produto editado com sucesso");
+    }
 }

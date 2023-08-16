@@ -52,3 +52,7 @@ Route::middleware('auth')->get('/user/{id}', [UserController::class, 'show_user'
 Route::middleware('auth')->get('/produto_lista', [ProductController::class, 'list']);
 
 Route::delete('/produto_lista/{id}',[ProductController::class, 'destroy']);
+
+Route::get('/produto_lista/edit/{id}',[ProductController::class, 'edit']);
+
+Route::put('/produto_lista/update/{id}', [ProductController::class, 'update']);

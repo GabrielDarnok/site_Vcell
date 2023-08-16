@@ -27,7 +27,7 @@
                         <td>{{$Products->categoria}}</td>
                         <td>{{$Products->valor}}</td>
                         <td>
-                            <a href="#" class="btn btn-info edit-btn"><ion-icon name="create-outline"> Editar </ion-icon></a> 
+                            <a href="/produto_lista/edit/{{ $Products->id }}" class="btn btn-info edit-btn"><ion-icon name="create-outline"> Editar </ion-icon></a> 
                             <form action="/produto_lista/{{ $Products->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
