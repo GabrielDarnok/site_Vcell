@@ -118,8 +118,23 @@ class ProductController extends Controller
     #Salvando a edição do produto
     public function update(Request $request){
 
-        Products::findOrFail($request->id)->update($request->all());
+        $dados = $request->all();
 
-        return redirect('/')->with('msg',"Produto editado com sucesso");
+        if($request->hasFile('imagem_produto') && $request->file('imagem_produto')->isValid()){
+
+            $requestImage = $request->imagem_produto;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+        
+            $request->imagem_produto->move(public_path('img/product'), $imageName);
+
+            $dados['imagem_produto'] = $imageName;
+        }
+
+        Products::findOrFail($request->id)->update($dados);
+
+        return redirect('/produto_lista')->with('msg',"Produto editado com sucesso");
     }
 }

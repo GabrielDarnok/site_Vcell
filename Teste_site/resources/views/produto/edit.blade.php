@@ -56,21 +56,21 @@
 						<div class="billing-details">
 							<div class="section-title">
 								<h3 class="title">Cadastrar Produto</h3>
-								<form action="/index/update/{{ $Product->id }}" method="POST" enctype="multipart/form-data">
+								<form action="/produto_lista/update/{{ $Product->id }}" method="POST" enctype="multipart/form-data">
 									@csrf
                                     @method('PUT')
 									<div class="form-group">
 										<label for="image">Imagem do Produto</label>
-										<input class="input" type="file" id="imagem_produto" name="imagem_produto" required>
-                                        <img scr="/img/product/{{ $Product->imagem_produto }}" alt="{{ $Product->nome_produto }}" class="img-preview">
+										<input class="input" type="file" id="imagem_produto" name="imagem_produto">
+                                        <img src="/img/product/{{ $Product->imagem_produto }}" alt="{{ $Product->nome_produto }}" class="img-preview">
                                     </div>
 									<div class="form-group">
 										<label for="title">Nome do Produto</label>
-										<input class="input" type="text" id="nome_produto" name="nome_produto" placeholder="Nome do produto..." value="{{ $Product->nome_produto }}" required>
+										<input class="input" type="text" id="nome_produto" name="nome_produto" placeholder="Nome do produto..." value="{{ $Product->nome_produto }}">
 									</div>
 									<div class="form-group">
 										<label for="title">Categoria do Produto</label>
-										<select type="text" class="form-control "id="categoria" name="categoria" placeholder="Categoria do produto..." value="{{ $Product->categoria }}" required>
+										<select type="text" class="form-control "id="categoria" name="categoria" placeholder="Categoria do produto..." value="{{ $Product->categoria }}">
 											<option value="CAPA" {{ $Product->categoria == "CAPA" ? "selected = 'selected'": "" }}>Capa</option>
 											<option value="FONE" {{ $Product->categoria == "FONE" ? "selected = 'selected'": "" }}>Fone de ouvido</option>
 											<option value="PELICULA" {{ $Product->categoria == "PELICULA" ? "selected = 'selected'": "" }}>Pelicula</option>
@@ -80,11 +80,11 @@
 									</div>
 									<div class="form-group">
 										<label for="title">Descrição do Produto</label>
-										<textarea class="input" type="text" id="descricao" name="descricao" placeholder="Descrição..." required>{{$Product->descricao}}</textarea>
+										<textarea class="input" type="text" id="descricao" name="descricao" placeholder="Descrição...">{{$Product->descricao}}</textarea>
 									</div>
 									<div class="form-group">
 										<label for="title">Valor do Produto</label>
-										<input class="input" type="text" id="valor" name="valor" pattern="^\d+(\.\d{1,2})?$" placeholder="Valor..." value="{{ $Product->valor }}" required>
+										<input class="input" type="text" id="valor" name="valor" pattern="^\d+(\.\d{1,2})?$" placeholder="Valor..." value="{{ $Product->valor }}">
 									</div>
 									<div class="form-group">
 										<input type="submit" class="btn btn-primary" value="Cadastrar Produto">
