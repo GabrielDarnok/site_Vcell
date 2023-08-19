@@ -97,8 +97,10 @@
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<p></p>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
+								<form action="/produto/join/{{ $Product->id }}" method="POST">
+									@csrf
+									<button class="add-to-cart-btn" onclick="event.preventDeafult(); this.closest('form').submit;"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
+								</form>
 							</div>
 
 							<ul class="product-btns">

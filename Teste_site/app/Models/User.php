@@ -62,4 +62,9 @@ class User extends Authenticatable
     public function Products(){
         return $this->hasMany('App\Models\Products');
     }
+
+    public function productsAsCarrinho() {
+        
+        return $this->belongsToMany('App\Models\Products');
+    }
 }

@@ -56,3 +56,5 @@ Route::delete('/produto_lista/{id}',[ProductController::class, 'destroy']);
 Route::get('/produto_lista/edit/{id}',[ProductController::class, 'edit']);
 
 Route::put('/produto_lista/update/{id}', [ProductController::class, 'update']);
+
+Route::get('/produto/join/{id}', ProductController::class, 'join')->middleware('auth');;

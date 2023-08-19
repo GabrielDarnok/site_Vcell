@@ -137,4 +137,13 @@ class ProductController extends Controller
 
         return redirect('/produto_lista')->with('msg',"Produto editado com sucesso");
     }
+
+    #Inserindo produtos no carrinho
+    public function join ($id) {
+        $user = auth()->user();
+
+        $user->productsAsCarrinho()->attach($id);
+
+        return redirect('/index')->with('Produto adicionado com sucesso');
+    }
 }
