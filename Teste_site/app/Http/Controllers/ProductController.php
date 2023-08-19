@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+
 use App\Models\Products;
 use App\Models\User;
+
 use PhpParser\Node\Stmt\Return_;
 use Illuminate\Support\Facades\Gate;
 
@@ -138,12 +140,10 @@ class ProductController extends Controller
         return redirect('/produto_lista')->with('msg',"Produto editado com sucesso");
     }
 
-    #Inserindo produtos no carrinho
-    public function join ($id) {
+    public function joinCarrinho($id) {
+        
         $user = auth()->user();
 
-        $user->productsAsCarrinho()->attach($id);
-
-        return redirect('/index')->with('Produto adicionado com sucesso');
+        $user->ProductsAsCarrinho()->attach($id);
     }
 }

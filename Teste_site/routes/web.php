@@ -17,6 +17,7 @@ use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Products;
+use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 
 Route::get('/produto/create',[RedirectController::class, 'create']);
@@ -57,4 +58,4 @@ Route::get('/produto_lista/edit/{id}',[ProductController::class, 'edit']);
 
 Route::put('/produto_lista/update/{id}', [ProductController::class, 'update']);
 
-Route::get('/produto/join/{id}', ProductController::class, 'join')->middleware('auth');;
+Route::post('/produto/join/{id}',[ ProductController::class, 'joinCarrinho'])->middleware('auth');
