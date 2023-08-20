@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('carrinho', function (Blueprint $table) {
-            $table->foreignId('product_id')->constrained();
+        Schema::create('products_user', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('products_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carrinho');
+        Schema::dropIfExists('products_user');
     }
 };

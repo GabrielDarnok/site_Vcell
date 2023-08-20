@@ -11,6 +11,7 @@ use App\Models\User;
 use PhpParser\Node\Stmt\Return_;
 use Illuminate\Support\Facades\Gate;
 
+
 class ProductController extends Controller
 {
     #Retornando os produtos para a pagina principal index
@@ -141,9 +142,15 @@ class ProductController extends Controller
     }
 
     public function joinCarrinho($id) {
-        
         $user = auth()->user();
-
+    
+        // Verificar se o produto já foi adicionado ao carrinho
+        if ($user->ProductsAsCarrinho()->where('products_id', $id)->exists()) {
+            return redirect('/')->with('msg', 'Produto já foi adicionado ao carrinho');
+        }
+    
         $user->ProductsAsCarrinho()->attach($id);
+    
+        return redirect('/')->with('msg', 'Produto adicionado no carrinho');
     }
 }

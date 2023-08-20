@@ -99,7 +99,7 @@
 								</div>
 								<form action="/produto/join/{{ $Product->id }}" method="POST">
 									@csrf
-									<button class="add-to-cart-btn" onclick="event.preventDeafult(); this.closest('form').submit;"><i class="fa fa-shopping-cart"></i> Adicionar ao carrinho</button>
+									<a href="/produto/join/{{ $Product->id }}" id="event-submit" class="btn btn-primary" onclick="event.preventDeafult(); this.closest('form').submit;"> Adicionar ao carrinho</a>
 								</form>
 							</div>
 
