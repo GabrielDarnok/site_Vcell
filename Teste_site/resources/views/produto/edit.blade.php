@@ -87,7 +87,7 @@
 										<input class="input" type="text" id="valor" name="valor" pattern="^\d+(\.\d{1,2})?$" placeholder="Valor..." value="{{ $Product->valor }}">
 									</div>
 									<div class="form-group">
-										<input type="submit" class="btn btn-primary" value="Cadastrar Produto">
+										<input type="submit" class="btn btn-primary" value="Atualizar Produto">
 									</div>
 								</form>
 							</div>	

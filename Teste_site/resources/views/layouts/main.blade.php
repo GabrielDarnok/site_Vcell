@@ -116,32 +116,31 @@
 									</a>
 									<div class="cart-dropdown">
 										<div class="cart-list">
+											@if(isset($ProductsAsCarrinho))
+											@if ($ProductsAsCarrinho->isEmpty())
+											<p>Carrinho vazio</p>
+											@else
+											@foreach ($ProductsAsCarrinho as $ProductsAsCarrinhos)
 											<div class="product-widget">
 												<div class="product-img">
-													<img src="./img/product1.png" alt="">
+													<img src="/img/product1.png" alt="">
 												</div>
 												<div class="product-body">
-													<h3 class="product-name"><a href="/product">Titulo Produto</a></h3>
+													<h3 class="product-name"><a href="/product">{{$ProductsAsCarrinhos->nome_produto}}</a></h3>
 													<h4 class="product-price"><span class="qty">1x</span>R$149,90</h4>
 												</div>
 												<button class="delete"><i class="fa fa-close"></i></button>
 											</div>
-
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product2.png" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">Titulo Produto</a></h3>
-													<h4 class="product-price"><span class="qty">3x</span>R$179,70</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
+											@endforeach
+											@endif
+											@endif
 										</div>
+										@if (isset($ProductsAsCarrinho))
 										<div class="cart-summary">
-											<small> 2 Item(s) selecionados</small>
-											<h5>SUBTOTAL: R$329,60</h5>
+    										<small>{{ $ProductsAsCarrinho->count() }} Item(s) selecionados</small>
+    										<h5>SUBTOTAL: R${{ number_format($subtotal, 2, ',', '.') }}</h5>
 										</div>
+										@endif
 										<div class="cart-btns">
 											<a href="/checkout">Ver carrinho</a>
 											<a href="/checkout">Conferir  <i class="fa fa-arrow-circle-right"></i></a>
