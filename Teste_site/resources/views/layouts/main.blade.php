@@ -127,9 +127,13 @@
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="/product">{{$ProductsAsCarrinhos->nome_produto}}</a></h3>
-													<h4 class="product-price"><span class="qty">1x</span>R$149,90</h4>
+													<h4 class="product-price"><span class="qty"></span>R$ {{number_format($ProductsAsCarrinhos->valor,2, ',', '.')}}</h4>
 												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
+												<form action="/produto/leave/{{ $ProductsAsCarrinhos->id }}" method="POST">
+													@csrf
+													@method("DELETE")
+													<button class="delete"><i class="fa fa-close"></i></button>
+												</form>
 											</div>
 											@endforeach
 											@endif

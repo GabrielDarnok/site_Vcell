@@ -201,7 +201,7 @@
 										<div class="product-body">
 											<p class="product-category">{{ $cheapestProducts->categoria }}</p>
 											<h3 class="product-name"><a href="/produto/{{ $cheapestProducts->id }}">{{ $cheapestProducts->nome_produto }}</a></h3>
-											<h4 class="product-price">R$ {{number_format($cheapestProducts->valor,2) }} <del class="product-old-price"> R$ {{number_format((($cheapestProducts->valor * 30)/100) + $cheapestProducts->valor,2)}}</del></h4>
+											<h4 class="product-price">R$ {{number_format($cheapestProducts->valor,2, ',', '.') }} <del class="product-old-price"> R$ {{number_format((($cheapestProducts->valor * 30)/100) + $cheapestProducts->valor,2, ',', '.')}}</del></h4>
 										</div>
 									</div>
 								</div>
@@ -253,7 +253,7 @@
 												<div class="product-body">
 													<p class="product-category">{{ $Products_find->categoria }}</p>
 													<h3 class="product-name"><a href="/produto/{{ $Products_find->id }}">{{ $Products_find->nome_produto }}</a></h3>
-													<h4 class="product-price">R$ {{number_format($Products_find->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products_find->valor * 30)/100) + $Products_find->valor,2)}}</del></h4>
+													<h4 class="product-price">R$ {{number_format($Products_find->valor,2, ',', '.') }}<del class="product-old-price"> R$ {{number_format((($Products_find->valor * 30)/100) + $Products_find->valor,2, ',', '.')}}</del></h4>
 													<div class="product-rating">
 														<i class="fa fa-star"></i>
 														<i class="fa fa-star"></i>

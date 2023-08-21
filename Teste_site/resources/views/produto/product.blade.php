@@ -84,7 +84,7 @@
 								</div>
 							</div>
 							<div>
-								<h3 class="product-price">R$ {{number_format($Product->valor,2)}} <del class="product-old-price"> R$ {{number_format((($Product->valor * 30)/100) + $Product->valor,2)}}</del></h3>
+								<h3 class="product-price">R$ {{number_format($Product->valor,2, ',', '.')}} <del class="product-old-price"> R$ {{number_format((($Product->valor * 30)/100) + $Product->valor,2, ',', '.')}}</del></h3>
 								<span class="product-available"><b></b>Em estoque</b>. Envio imediato!</span>
 							</div>
 								<p>{{$Product->descricao}}</p>
@@ -372,7 +372,7 @@
 									<div class="product-body">
 										<p class="product-category">{{ $Products_list->categoria }}</p>
 										<h3 class="product-name"><a href="/produto/{{ $Products_list->id }}">{{ $Products_list->nome_produto }}</a></h3>
-										<h4 class="product-price">R$ {{number_format($Products_list->valor,2) }} <del class="product-old-price"> R$ {{number_format((($Products_list->valor * 30)/100) + $Products_list->valor,2)}}</del></h4>
+										<h4 class="product-price">R$ {{number_format($Products_list->valor,2, ',', '.') }} <del class="product-old-price"> R$ {{number_format((($Products_list->valor * 30)/100) + $Products_list->valor,2, ',', '.')}}</del></h4>
 										<div class="product-rating">
 										</div>
 										<div class="product-btns">

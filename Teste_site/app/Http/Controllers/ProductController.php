@@ -178,6 +178,7 @@ class ProductController extends Controller
         return redirect('/produto_lista')->with('msg',"Produto editado com sucesso");
     }
 
+    #adicionando produto no carrinhho
     public function joinCarrinho($id) {
         $user = auth()->user();
     
@@ -189,5 +190,16 @@ class ProductController extends Controller
         $user->ProductsAsCarrinho()->attach($id);
     
         return redirect('/')->with('msg', 'Produto adicionado no carrinho');
+    }
+
+    #Removendo produto do carrinho
+    public function leaveCarrinho($id){
+        $user = auth()->user();
+
+        $Product = Products::findOrFail($id);
+
+        $user->ProductsAsCarrinho()->detach($id);
+
+        return redirect('/')->with('msg', 'Produto removido do carrinho');
     }
 }

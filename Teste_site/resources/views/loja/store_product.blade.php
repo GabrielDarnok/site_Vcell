@@ -235,7 +235,7 @@
 										<div class="product-body">
 											<p class="product-category">{{ $Products->categoria }}</p>
 											<h3 class="product-name"><a href="/produto/{{ $Products->id }}">{{ $Products->nome_produto }}</a></h3>
-											<h4 class="product-price">R$ {{number_format($Products->valor,2) }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 30)/100) + $Products->valor,2)}}</del></h4>
+											<h4 class="product-price">R$ {{number_format($Products->valor,2, ',', '.') }}<del class="product-old-price"> R$ {{number_format((($Products->valor * 30)/100) + $Products->valor,2, ',', '.')}}</del></h4>
 											<div class="product-rating">
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>

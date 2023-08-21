@@ -25,7 +25,7 @@
                         <td scope="row">{{$loop->index + 1}}</td>
                         <td><a href="/produto/{{ $Products->id }}">{{$Products->nome_produto}}</td>
                         <td>{{$Products->categoria}}</td>
-                        <td>{{$Products->valor}}</td>
+                        <td>R$ {{number_format($Products->valor,2, ',', '.')}}</td>
                         <td>
                             <a href="/produto_lista/edit/{{ $Products->id }}" class="btn btn-info edit-btn"><ion-icon name="create-outline"> Editar </ion-icon></a> 
                             <form action="/produto_lista/{{ $Products->id }}" method="POST">
