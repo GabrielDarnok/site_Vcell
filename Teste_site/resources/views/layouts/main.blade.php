@@ -129,14 +129,36 @@
 													<h3 class="product-name"><a href="/product">{{$ProductsAsCarrinhos->nome_produto}}</a></h3>
 													<h4 class="product-price"><span class="qty"></span>R$ {{number_format($ProductsAsCarrinhos->valor,2, ',', '.')}}</h4>
 												</div>
-												<form action="/produto/leave/{{ $ProductsAsCarrinhos->id }}" method="POST">
+												<form id="deleteForm" action="/produto/leave/{{ $ProductsAsCarrinhos->id }}" method="POST">
 													@csrf
 													@method("DELETE")
 													<button class="delete"><i class="fa fa-close"></i></button>
 												</form>
+												<script>
+													document.addEventListener("DOMContentLoaded", function() {
+														const deleteForm = document.getElementById("deleteForm");
+														const deleteButton = deleteForm.querySelector(".delete");
+
+														deleteButton.addEventListener("click", function(event) {
+															event.preventDefault();
+
+															const confirmation = confirm("Tem certeza que deseja remover o produto do carrinho?");
+															if (confirmation) {
+																	deleteForm.submit();
+															}
+														});
+													});
+												</script>
 											</div>
 											@endforeach
 											@endif
+											@else
+											<p>Carrinho vazio</p>
+											<a href="/login">Adicionar produtos no carrinho</a>
+											<div class="cart-summary">
+    											<small>0 Item(s) selecionados</small>
+    											<h5>SUBTOTAL: R$ 00,00</h5>
+											</div>
 											@endif
 										</div>
 										@if (isset($ProductsAsCarrinho))
