@@ -126,8 +126,9 @@
 													<img src="/img/product/{{ $ProductsAsCarrinhos->imagem_produto }}" alt="">
 												</div>
 												<div class="product-body">
-													<h3 class="product-name"><a href="/product">{{$ProductsAsCarrinhos->nome_produto}}</a></h3>
+													<h3 class="product-name"><a href="/product">{{ $ProductsAsCarrinhos->nome_produto }}</a></h3>
 													<h4 class="product-price"><span class="qty"></span>R$ {{number_format($ProductsAsCarrinhos->valor,2, ',', '.')}}</h4>
+													<h4>Quantidade: {{ $ProductsAsCarrinhos->pivot->quantidade_produto }}</h4>
 												</div>
 												<form class="deleteForm" id="deleteForm" action="/produto/leave/{{ $ProductsAsCarrinhos->id }}" method="POST">
 													@csrf

@@ -18,13 +18,15 @@ class ProductController extends Controller
     public function index (){
         
         $user = auth()->user();
-
+        $subtotal = 0;
         $Product = Products::all();
         $Product_date = Products::orderBy('created_at', 'desc')->get();
 
         if ($user) {
             $ProductsAsCarrinho = $user->ProductsAsCarrinho;
-            $subtotal = $ProductsAsCarrinho->sum('valor');
+            foreach ($ProductsAsCarrinho as $product) {
+                $subtotal += $product->pivot->quantidade_produto * $product->valor;
+            }
             return view('index',['Product'=>$Product, 'Product_date'=>$Product_date, 'ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal]);
         }
 
@@ -34,10 +36,13 @@ class ProductController extends Controller
     #Fazendo a busca para verificar os produtos disponiveis
     public function store_product(){
         $Product = Products::all();
+        $subtotal= 0;
         $user = auth()->user();
         if ($user) {
             $ProductsAsCarrinho = $user->ProductsAsCarrinho;
-            $subtotal = $ProductsAsCarrinho->sum('valor');
+            foreach ($ProductsAsCarrinho as $product) {
+                $subtotal += $product->pivot->quantidade_produto * $product->valor;
+            }
             return view('loja.store_product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product]);
         }
 
@@ -98,12 +103,15 @@ class ProductController extends Controller
     #Fazendo a busca do produto quando selecionado
     public function show_products($id){
         $user = auth()->user();
+        $subtotal = 0;
         $Product = Products::findOrFail($id);
         $Product_list = Products::all();
 
         if ($user) {
             $ProductsAsCarrinho = $user->ProductsAsCarrinho;
-            $subtotal = $ProductsAsCarrinho->sum('valor');
+            foreach ($ProductsAsCarrinho as $product) {
+                $subtotal += $product->pivot->quantidade_produto * $product->valor;
+            }
             return view('produto.product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product, 'Product_list'=>$Product_list]);
         }
 
@@ -113,12 +121,14 @@ class ProductController extends Controller
     #Retornando a lista de produtos ao admin
     public function list(){
         $user = auth()->user();
-
+        $subtotal = 0;
         $Product = Products::all();
 
         if ($user) {
             $ProductsAsCarrinho = $user->ProductsAsCarrinho;
-            $subtotal = $ProductsAsCarrinho->sum('valor');
+            foreach ($ProductsAsCarrinho as $product) {
+                $subtotal += $product->pivot->quantidade_produto * $product->valor;
+            }
             return view('produto.product_list',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product]);
         }
 
