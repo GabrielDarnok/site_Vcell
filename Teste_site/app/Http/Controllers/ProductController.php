@@ -149,7 +149,9 @@ class ProductController extends Controller
         $Product = Products::findOrFail($id);
         if ($user) {
             $ProductsAsCarrinho = $user->ProductsAsCarrinho;
-            $subtotal = $ProductsAsCarrinho->sum('valor');
+            $subtotal = $ProductsAsCarrinho->sum(function ($produto) {
+                return $produto->valor * $produto->quantidade;
+            });
             return view('produto.edit',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product]);
         }
 
@@ -178,8 +180,11 @@ class ProductController extends Controller
         return redirect('/produto_lista')->with('msg',"Produto editado com sucesso");
     }
 
-    #adicionando produto no carrinhho
-    public function joinCarrinho($id) {
+    #Adicionando produto no carrinhho
+    public function joinCarrinho(Request $request, $id) {
+        
+        $quantidade_produto = $request->input('quantidade_produto');
+
         $user = auth()->user();
     
         // Verificar se o produto já foi adicionado ao carrinho
@@ -187,7 +192,7 @@ class ProductController extends Controller
             return redirect('/')->with('msg', 'Erro! Produto já foi adicionado ao carrinho');
         }
     
-        $user->ProductsAsCarrinho()->attach($id);
+        $user->ProductsAsCarrinho()->attach($id, ['quantidade_produto' => $quantidade_produto]);
     
         return redirect('/')->with('msg', 'Produto adicionado no carrinho');
     }

@@ -89,17 +89,17 @@
 							</div>
 								<p>{{$Product->descricao}}</p>
 							<div class="add-to-cart">
+								<form action="/produto/join/{{ $Product->id }}" method="POST">
+								@csrf
 								<div class="qty-label">
 									Quantidade
 									<div class="input-number">
-										<input type="number">
+										<input type="number" name="quantidade_produto" value="1">
 										<span class="qty-up">+</span>
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<form action="/produto/join/{{ $Product->id }}" method="POST">
-									@csrf
-									<a href="/produto/join/{{ $Product->id }}" id="event-submit" class="btn btn-primary" onclick="event.preventDeafult(); this.closest('form').submit;"> Adicionar ao carrinho</a>
+									<button type="submit" class="btn btn-primary">Adicionar ao carrinho</button>
 								</form>
 							</div>
 
@@ -110,7 +110,7 @@
 
 							<ul class="product-links">
 								<li>Categoria:</li>
-								<li><a href="#">{{$Product->categoria}}</a></li>
+								<li><a href="/busca/busca_product?search={{$Product->categoria}}">{{$Product->categoria}}</a></li>
 							</ul>
 
 							<ul class="product-links">
