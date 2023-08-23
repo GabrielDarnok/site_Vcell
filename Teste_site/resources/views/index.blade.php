@@ -134,7 +134,11 @@
 													</div>
 												</div>
 												<div class="add-to-cart">
-													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
+													<form action="/produto/join/{{ $Products_date->id }}" method="POST">
+														@csrf
+														<input type="hidden" name="quantidade_produto" value="1">
+														<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</button>
+													</form>											
 												</div>
 											</div>
 											<!-- /product -->
@@ -260,7 +264,11 @@
 													</div>
 												</div>
 												<div class="add-to-cart">
-													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> adicionar no carrinho</button>
+													<form action="/produto/join/{{ $Products->id }}" method="POST">
+														@csrf
+														<input type="hidden" name="quantidade_produto" value="1">
+														<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</button>
+													</form>											
 												</div>
 											</div>
 											<!-- /product -->

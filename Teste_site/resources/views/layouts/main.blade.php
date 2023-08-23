@@ -126,7 +126,7 @@
 													<img src="/img/product/{{ $ProductsAsCarrinhos->imagem_produto }}" alt="">
 												</div>
 												<div class="product-body">
-													<h3 class="product-name"><a href="/product">{{ $ProductsAsCarrinhos->nome_produto }}</a></h3>
+													<h3 class="product-name"><a href="/produto/{{ $ProductsAsCarrinhos->id }}">{{ $ProductsAsCarrinhos->nome_produto }}</a></h3>
 													<h4 class="product-price"><span class="qty"></span>R$ {{number_format($ProductsAsCarrinhos->valor,2, ',', '.')}}</h4>
 													<h4>Quantidade: {{ $ProductsAsCarrinhos->pivot->quantidade_produto }}</h4>
 												</div>
@@ -228,11 +228,11 @@
 							<div class="footer">
 								<h3 class="footer-title">Categorias</h3>
 								<ul class="footer-links">
-									<li><a href="#">Capas</a></li>
-									<li><a href="#">Fones</a></li>
-									<li><a href="#">Celulares</a></li>
-									<li><a href="#">Peliculas</a></li>
-									<li><a href="#">Carregadores</a></li>
+									<li><a href="/busca/busca_product?search=capa">Capas</a></li>
+									<li><a href="/busca/busca_product?search=fone">Fones</a></li>
+									<li><a href="/busca/busca_product?search=celular">Celulares</a></li>
+									<li><a href="/busca/busca_product?search=pelicula">Peliculas</a></li>
+									<li><a href="/busca/busca_product?search=carregador">Carregadores</a></li>
 								</ul>
 							</div>
 						</div>
@@ -256,10 +256,14 @@
 							<div class="footer">
 								<h3 class="footer-title">Serviço</h3>
 								<ul class="footer-links">
-									<li><a href="#">Minha Conta</a></li>
-									<li><a href="/product">Carrinho</a></li>
-									<li><a href="/store">Compras</a></li>
-									<li><a href="/checkout">Rastreamento</a></li>
+									@if(auth()->check())
+    								<li><a href="/user/{{ auth()->user()->id }}">Minha Conta</a></li>
+									@else
+									<li><a href="/register">Cadastrar minha conta</a></li>
+									@endif
+									<li><a href="/checkout">Carrinho</a></li>
+									<li><a href="/loja/store_product">Compras</a></li>
+									<li><a href="/trace">Rastreamento</a></li>
 									<li><a href="#">Ajuda</a></li>
 								</ul>
 							</div>

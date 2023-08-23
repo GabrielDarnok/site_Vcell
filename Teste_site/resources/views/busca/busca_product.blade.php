@@ -268,7 +268,11 @@
 													</div>
 												</div>
 												<div class="add-to-cart">
-													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Adicionar no carrinho</button>
+													<form action="/loja/produto/join/{{ $Products_find->id }}" method="POST">
+														@csrf
+														<input type="hidden" name="quantidade_produto" value="1">
+														<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Adicionar ao carrinho</button>
+													</form>											
 												</div>
 											</div>
 										</div>

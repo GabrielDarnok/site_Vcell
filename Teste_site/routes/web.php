@@ -60,4 +60,8 @@ Route::put('/produto_lista/update/{id}', [ProductController::class, 'update']);
 
 Route::post('/produto/join/{id}', [ProductController::class, 'joinCarrinho'])->name('produto.join')->middleware('auth');
 
+Route::get('/produto/join/{id}', [ProductController::class, 'joinCarrinho'])->name('produto.join')->middleware('auth');
+
+Route::post('/loja/produto/join/{id}', [ProductController::class, 'joinCarrinho2'])->name('produto.join')->middleware('auth');
+
 Route::delete('/produto/leave/{id}',[ ProductController::class, 'leaveCarrinho'])->middleware('auth');

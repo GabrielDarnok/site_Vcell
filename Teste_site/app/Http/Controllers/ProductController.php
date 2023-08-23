@@ -51,22 +51,26 @@ class ProductController extends Controller
 
     #Fazendo a busca do produto quando digitado na URL ou no input de busca
     public function busca_product(){
+        $subtotal = 0;
         $user = auth()->user();
         $busca = request('search');
         $message = 'Nenhum produto encontrado com os critérios de busca: ' . $busca;
         $Product_find = Products::where('nome_produto', 'LIKE', "%$busca%")->orWhere('categoria', 'LIKE', "%$busca%")->orderBy('valor')->get();
         $cheapestProduct = $Product_find->take(2);
-
-        if ($Product_find->isEmpty() || empty($busca)) {
-            if ($user) {
-                $ProductsAsCarrinho = $user->ProductsAsCarrinho;
-                $subtotal = $ProductsAsCarrinho->sum('valor');
-                return view('busca.busca_product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'message' => $message]);
+        if ($user) {
+            $ProductsAsCarrinho = $user->ProductsAsCarrinho;
+            foreach ($ProductsAsCarrinho as $product) {
+                $subtotal += $product->pivot->quantidade_produto * $product->valor;
             }
-            return view('busca.busca_product', ['message' => $message]);
         }
-
-        return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find]);
+        if ($Product_find->isEmpty() || empty($busca)) {
+            return view('busca.busca_product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'message' => $message]);
+        }
+        if (isset($ProductsAsCarrinho)) {
+            return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find,'ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal]);
+        } else {
+            return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find]);
+        }
     }
     
     #Cadastro de produtos
@@ -197,14 +201,57 @@ class ProductController extends Controller
 
         $user = auth()->user();
     
-        // Verificar se o produto já foi adicionado ao carrinho
+        // Verificar se o produto já foi adicionado ao carrinho e caso for ele pega e soma a quantidade com a quantidade no bd
         if ($user->ProductsAsCarrinho()->where('products_id', $id)->exists()) {
-            return redirect('/')->with('msg', 'Erro! Produto já foi adicionado ao carrinho');
+            // Recuperar a relação pivot para o produto
+            $pivotData = $user->ProductsAsCarrinho()->where('products_id', $id)->first()->pivot;
+
+            // Calcular a nova quantidade somando a quantidade existente com a quantidade do banco de dados
+            $novaQuantidade = $pivotData->quantidade_produto + $quantidade_produto;
+
+            // Atualizar a relação pivot com a nova quantidade
+            $user->ProductsAsCarrinho()->updateExistingPivot($id, ['quantidade_produto' => $novaQuantidade]);
+
+            return redirect('/')->with('msg', 'Quantidade do produto no carrinho atualizada');
         }
     
-        $user->ProductsAsCarrinho()->attach($id, ['quantidade_produto' => $quantidade_produto]);
+        if ($quantidade_produto == null){
+            $user->ProductsAsCarrinho()->attach($id);
+        }else{
+            $user->ProductsAsCarrinho()->attach($id, ['quantidade_produto' => $quantidade_produto]);
+        }
     
         return redirect('/')->with('msg', 'Produto adicionado no carrinho');
+    }
+
+    #Adicionando produto no carrinhho
+    public function joinCarrinho2(Request $request, $id) {
+        
+        $quantidade_produto = $request->input('quantidade_produto');
+
+        $user = auth()->user();
+        
+        // Verificar se o produto já foi adicionado ao carrinho
+        if ($user->ProductsAsCarrinho()->where('products_id', $id)->exists()) {
+            // Recuperar a relação pivot para o produto
+            $pivotData = $user->ProductsAsCarrinho()->where('products_id', $id)->first()->pivot;
+        
+            // Calcular a nova quantidade somando a quantidade existente com a quantidade do banco de dados
+            $novaQuantidade = $pivotData->quantidade_produto + $quantidade_produto;
+        
+            // Atualizar a relação pivot com a nova quantidade
+            $user->ProductsAsCarrinho()->updateExistingPivot($id, ['quantidade_produto' => $novaQuantidade]);
+        
+            return redirect('/loja/store_product')->with('msg', 'Quantidade do produto no carrinho atualizada');
+        }
+    
+        if ($quantidade_produto == null){
+            $user->ProductsAsCarrinho()->attach($id);
+        }else{
+            $user->ProductsAsCarrinho()->attach($id, ['quantidade_produto' => $quantidade_produto]);
+        }
+    
+        return redirect('/loja/store_product')->with('msg', 'Produto adicionado no carrinho');
     }
 
     #Removendo produto do carrinho
@@ -215,6 +262,6 @@ class ProductController extends Controller
 
         $user->ProductsAsCarrinho()->detach($id);
 
-        return redirect('/')->with('msg', 'Produto removido do carrinho');
+        return redirect('/')->with('msg', 'Produto(s) removido do carrinho');
     }
 }
