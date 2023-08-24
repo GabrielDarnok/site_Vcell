@@ -66,4 +66,9 @@ class User extends Authenticatable
     public function ProductsAsCarrinho() {
         return $this->belongsToMany('App\Models\Products')->withPivot('quantidade_produto');
     }
+    
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role');
+    }
 }
