@@ -125,7 +125,7 @@ class ProductController extends Controller
     #Retornando a lista de produtos ao admin
     public function list(){
         $user = auth()->user();
-        if($user->role == 'user'){
+        if(!isset($user->role) || $user->role == 'user'){
             return redirect('/');
         }
         $subtotal = 0;
@@ -155,7 +155,7 @@ class ProductController extends Controller
     public function destroy($id){
         $user = auth()->user();
         
-        if($user->role == 'user' || isset($user)){
+        if(!isset($user->role) || $user->role == 'user'){
             return redirect('/');
         }
         $Product = Products::findOrFail($id)->delete();
@@ -166,7 +166,7 @@ class ProductController extends Controller
     #Editando um produto cadastrado
     public function edit($id){
         $user = auth()->user();
-        if($user->role == 'user' || isset($user)){
+        if(!isset($user->role) || $user->role == 'user'){
             return redirect('/');
         }
         $Product = Products::findOrFail($id);
@@ -183,7 +183,7 @@ class ProductController extends Controller
     #Salvando a edição do produto
     public function update(Request $request){
         $user = auth()->user();
-        if($user->role == 'user'){
+        if(!isset($user->role) || $user->role == 'user'){
             return redirect('/');
         }
 

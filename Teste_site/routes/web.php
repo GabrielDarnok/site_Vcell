@@ -52,9 +52,7 @@ Route::middleware('auth')->get('/user/{id}', [UserController::class, 'show_user'
 
 Route::middleware('auth')->get('/produto_lista', [ProductController::class, 'list']);
 
-Route::get('/produto_lista/{any}', [ProductController::class, 'index']);
-
-Route::delete('/produto_lista/{product}', [ProductController::class, 'destroy'])->name('product.destroy')->middleware('checkDeleteRequest');
+Route::delete('/produto_lista/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 Route::get('/produto_lista/edit/{id}',[ProductController::class, 'edit']);
 
