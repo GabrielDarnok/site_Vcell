@@ -34,7 +34,7 @@ Route::get('/checkout',[RedirectController::class, 'checkout']);
 
 Route::get('/trace',[RedirectController::class, 'trace']);
 
-Route::get('/cadastrar_produto',[RedirectController::class, 'cadastrar'])->middleware('auth');
+Route::get('/cadastrar_produto',[RedirectController::class, 'cadastrar']);
 
 Route::post('/index', [ProductController::class, 'store']);
 
@@ -52,11 +52,15 @@ Route::middleware('auth')->get('/user/{id}', [UserController::class, 'show_user'
 
 Route::middleware('auth')->get('/produto_lista', [ProductController::class, 'list']);
 
-Route::delete('/produto_lista/{id}',[ProductController::class, 'destroy']);
+Route::get('/produto_lista/{any}', [ProductController::class, 'index']);
+
+Route::delete('/produto_lista/{product}', [ProductController::class, 'destroy'])->name('product.destroy')->middleware('checkDeleteRequest');
 
 Route::get('/produto_lista/edit/{id}',[ProductController::class, 'edit']);
 
 Route::put('/produto_lista/update/{id}', [ProductController::class, 'update']);
+
+Route::get('/produto_lista/update/{any}', [ProductController::class, 'index']);
 
 Route::post('/produto/join/{id}', [ProductController::class, 'joinCarrinho'])->name('produto.join')->middleware('auth');
 

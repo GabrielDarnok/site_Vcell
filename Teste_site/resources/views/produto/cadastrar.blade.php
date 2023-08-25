@@ -12,10 +12,14 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li><a href="/">Início</a></li>
+						<li class="active"><a href="/">Início</a></li>
 						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
-						<li class="active"><a href="/checkout">Pedido</a></li>
+						<li><a href="/checkout">Pedido</a></li>
+						@if (!isset($user->role) || $user->role == 'user')
+						<li><a href="/cadastrar_produto">Cadastrar produto</a></li>
+						<li><a href="/">Visulizar produtos</a></li>
+						@endif
 					</ul>
 					<!-- /NAV -->
 				</div>

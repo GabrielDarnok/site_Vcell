@@ -16,6 +16,13 @@
 						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
+						@auth
+						@if ($user->role == 'admin')
+						<li><a href="/cadastrar_produto">Cadastrar produto</a></li>
+						<li><a href="/produto_lista">Visulizar produtos</a></li>
+						<li><a href="#">Painel admin</a></li>
+						@endif
+						@endauth
 					</ul>
 					<!-- /NAV -->
 				</div>
@@ -35,7 +42,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop01.png" alt="">
+								<img src="/img/shop01.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Celulares</h3>
@@ -49,7 +56,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop03.png" alt="">
+								<img src="/img/shop03.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Fones de ouvido</h3>
@@ -63,7 +70,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop02.png" alt="">
+								<img src="/img/shop02.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Cabos de Carregadores</h3>
@@ -428,10 +435,10 @@
 		</div>
 		<!-- /NEWSLETTER -->
 		<!-- jQuery Plugins -->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/slick.min.js"></script>
-		<script src="js/nouislider.min.js"></script>
-		<script src="js/jquery.zoom.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/slick.min.js"></script>
+		<script src="/js/nouislider.min.js"></script>
+		<script src="/js/jquery.zoom.min.js"></script>
+		<script src="/js/main.js"></script>
 @endsection

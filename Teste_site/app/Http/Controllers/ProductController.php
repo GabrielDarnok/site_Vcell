@@ -27,10 +27,10 @@ class ProductController extends Controller
             foreach ($ProductsAsCarrinho as $product) {
                 $subtotal += $product->pivot->quantidade_produto * $product->valor;
             }
-            return view('index',['Product'=>$Product, 'Product_date'=>$Product_date, 'ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal]);
+            return view('index',['Product'=>$Product, 'Product_date'=>$Product_date, 'ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'user' => $user]);
         }
 
-        return view('index',['Product'=>$Product, 'Product_date'=>$Product_date]);
+        return view('index',['Product'=>$Product, 'Product_date'=>$Product_date,'user' => $user]);
     }
     
     #Fazendo a busca para verificar os produtos disponiveis
@@ -43,10 +43,10 @@ class ProductController extends Controller
             foreach ($ProductsAsCarrinho as $product) {
                 $subtotal += $product->pivot->quantidade_produto * $product->valor;
             }
-            return view('loja.store_product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product]);
+            return view('loja.store_product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product,'user' => $user]);
         }
 
-        return view('loja.store_product', ['Product'=>$Product]);
+        return view('loja.store_product', ['Product'=>$Product,'user' => $user]);
     }
 
     #Fazendo a busca do produto quando digitado na URL ou no input de busca
@@ -64,12 +64,12 @@ class ProductController extends Controller
             }
         }
         if ($Product_find->isEmpty() || empty($busca)) {
-            return view('busca.busca_product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'message' => $message]);
+            return view('busca.busca_product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'message' => $message, 'user' => $user]);
         }
         if (isset($ProductsAsCarrinho)) {
-            return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find,'ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal]);
+            return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find,'ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'user' => $user]);
         } else {
-            return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find]);
+            return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find, 'user' => $user]);
         }
     }
     
@@ -116,15 +116,18 @@ class ProductController extends Controller
             foreach ($ProductsAsCarrinho as $product) {
                 $subtotal += $product->pivot->quantidade_produto * $product->valor;
             }
-            return view('produto.product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product, 'Product_list'=>$Product_list]);
+            return view('produto.product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product, 'Product_list'=>$Product_list, 'user' => $user]);
         }
 
-        return view('produto.product', ['Product'=>$Product, 'Product_list'=>$Product_list]);
+        return view('produto.product', ['Product'=>$Product, 'Product_list'=>$Product_list, 'user' => $user]);
     }
 
     #Retornando a lista de produtos ao admin
     public function list(){
         $user = auth()->user();
+        if($user->role == 'user'){
+            return redirect('/');
+        }
         $subtotal = 0;
         $Product = Products::all();
 
@@ -133,10 +136,10 @@ class ProductController extends Controller
             foreach ($ProductsAsCarrinho as $product) {
                 $subtotal += $product->pivot->quantidade_produto * $product->valor;
             }
-            return view('produto.product_list',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product]);
+            return view('produto.product_list',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product, 'user' => $user]);
         }
 
-        return view('produto.product_list',['Product'=>$Product]);
+        return view('produto.product_list',['Product'=>$Product, 'user' => $user]);
     }
 
     #Interação que adiciona itens no carrinho
@@ -150,29 +153,39 @@ class ProductController extends Controller
 
     #Deletando produto do bd
     public function destroy($id){
+        $user = auth()->user();
         
+        if($user->role == 'user' || isset($user)){
+            return redirect('/');
+        }
         $Product = Products::findOrFail($id)->delete();
         
-        return redirect('/produto_lista')->with('msg',"Produto adicionado com sucesso");
+        return redirect('/produto_lista')->with('msg',"Produto Removido com sucesso");
     }
 
     #Editando um produto cadastrado
     public function edit($id){
         $user = auth()->user();
-
+        if($user->role == 'user' || isset($user)){
+            return redirect('/');
+        }
         $Product = Products::findOrFail($id);
         if ($user) {
             $ProductsAsCarrinho = $user->ProductsAsCarrinho;
             $subtotal = $ProductsAsCarrinho->sum(function ($produto) {
                 return $produto->valor * $produto->quantidade;
             });
-            return view('produto.edit',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product]);
+            return view('produto.edit',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'Product'=>$Product, 'user' => $user]);
         }
 
-        return view('produto.edit', ['Product'=>$Product]);
+        return view('produto.edit', ['Product'=>$Product, 'user' => $user]);
     }
     #Salvando a edição do produto
     public function update(Request $request){
+        $user = auth()->user();
+        if($user->role == 'user'){
+            return redirect('/');
+        }
 
         $dados = $request->all();
 

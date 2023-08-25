@@ -17,9 +17,9 @@ class RedirectController extends Controller
             foreach ($ProductsAsCarrinho as $product) {
                 $subtotal += $product->pivot->quantidade_produto * $product->valor;
             }
-            return view('checkout',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal]);
+            return view('checkout',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'user' => $user]);
         }
-        return view('checkout');
+        return view('checkout', ['user' => $user]);
     }
 
     #Retornando a pagina trace ao usuario
@@ -31,22 +31,26 @@ class RedirectController extends Controller
             foreach ($ProductsAsCarrinho as $product) {
                 $subtotal += $product->pivot->quantidade_produto * $product->valor;
             }
-            return view('trace',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal]);
+            return view('trace',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'user' => $user]);
         }
-        return view('trace');
+        return view('trace', ['user' => $user]);
     }
 
     #Retornando a pagina Cadastrar ao usuario
     public function cadastrar(){
         $user = auth()->user();
+        
+        if (!isset($user->role) || $user->role == 'user') {
+            return redirect('/');
+        }
         $subtotal = 0;
         if ($user) {
             $ProductsAsCarrinho = $user->ProductsAsCarrinho;
             foreach ($ProductsAsCarrinho as $product) {
                 $subtotal += $product->pivot->quantidade_produto * $product->valor;
             }
-            return view('produto.cadastrar',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal]);
+            return view('produto.cadastrar',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'user' => $user]);
         }
-        return view('produto.cadastrar');
+        return view('produto.cadastrar',['user' => $user]);
     }
 }

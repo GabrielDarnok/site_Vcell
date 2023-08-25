@@ -28,7 +28,7 @@
                         <td>R$ {{number_format($Products->valor,2, ',', '.')}}</td>
                         <td>
                             <a href="/produto_lista/edit/{{ $Products->id }}" class="btn btn-info edit-btn"><ion-icon name="create-outline"> Editar </ion-icon></a> 
-                            <form action="/produto_lista/{{ $Products->id }}" method="POST">
+                            <form action="{{ route('product.destroy', ['product' => $Products]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger delete-btn"> <ion-icon name="trash-outline"> DELETAR </ion-icon></button>
