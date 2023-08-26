@@ -20,8 +20,6 @@ use App\Models\Products;
 use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 
-Route::get('/produto/create',[RedirectController::class, 'create']);
-
 Route::get('/produto/{id}',[ProductController::class, 'show_products']);
 
 Route::get('/',[ProductController::class, 'index']);
