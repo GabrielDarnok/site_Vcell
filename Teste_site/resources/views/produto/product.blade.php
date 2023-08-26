@@ -15,10 +15,13 @@
 						<li><a href="/loja/store_product">Loja</a></li>
 						<li><a href="/trace">Checar</a></li>
 						<li><a href="/checkout">Pedido</a></li>
-						@if (!isset($user->role) || $user->role == 'user')
+						@auth
+						@if ($user->role == 'admin')
 						<li><a href="/cadastrar_produto">Cadastrar produto</a></li>
-						<li><a href="/">Visulizar produtos</a></li>
+						<li><a href="/produto_lista">Visulizar produtos</a></li>
+						<li><a href="#">Painel admin</a></li>
 						@endif
+						@endauth
 					</ul>
 					<!-- /NAV -->
 				</div>

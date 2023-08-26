@@ -4,34 +4,6 @@
 
 @section('content')
 		
-		<!-- NAVIGATION -->
-		<nav id="navigation">
-			<!-- container -->
-			<div class="container">
-				<!-- responsive-nav -->
-				<div id="responsive-nav">
-					<!-- NAV -->
-					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="/">Início</a></li>
-						<li><a href="/loja/store_product">Loja</a></li>
-						<li><a href="/trace">Checar</a></li>
-						<li><a href="/checkout">Pedido</a></li>
-						@auth
-						@if ($user->role == 'admin')
-						<li><a href="/cadastrar_produto">Cadastrar produto</a></li>
-						<li><a href="/produto_lista">Visulizar produtos</a></li>
-						<li><a href="#">Painel admin</a></li>
-						@endif
-						@endauth
-					</ul>
-					<!-- /NAV -->
-				</div>
-				<!-- /responsive-nav -->
-			</div>
-			<!-- /container -->
-		</nav>
-		<!-- /NAVIGATION -->
-
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->

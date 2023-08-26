@@ -64,12 +64,12 @@ class ProductController extends Controller
             }
         }
         if ($Product_find->isEmpty() || empty($busca)) {
-            return view('busca.busca_product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'message' => $message, 'user' => $user]);
+            return view('busca.busca_product',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'message' => $message, 'user' => $user, 'busca' =>  $busca]);
         }
         if (isset($ProductsAsCarrinho)) {
-            return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find,'ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'user' => $user]);
+            return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find,'ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'user' => $user, 'busca' =>  $busca]);
         } else {
-            return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find, 'user' => $user]);
+            return view('busca.busca_product', ['cheapestProduct'=>$cheapestProduct, 'Product_find'=>$Product_find, 'user' => $user, 'busca' =>  $busca]);
         }
     }
     

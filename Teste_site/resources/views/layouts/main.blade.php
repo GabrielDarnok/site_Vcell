@@ -87,7 +87,11 @@
 										<option value="5">Carregadores</option>
 										<option value="6">Diversos</option>
 									</select>
+									@if (!isset($busca))
 									<input class="input" name="search" placeholder="Pesquise aqui">
+									@else
+									<input class="input" name="search" placeholder="Pesquise aqui" value="{{ $busca }}">
+									@endif
 									<button class="search-btn">Pesquisa</button>
 								</form>
 							</div>
@@ -200,11 +204,39 @@
 		</header>
 		<!-- /HEADER -->
 		<main>
-					@if(session('msg'))
-						<p class="msg">{{ session('msg') }}</p>
-					@endif
-					@yield ('content')
+			@if(session('msg'))
+			<p class="msg">{{ session('msg') }}</p>
+			@endif
+			<!-- NAVIGATION -->
+			<nav id="navigation">
+				<!-- container -->
+				<div class="container">
+					<!-- responsive-nav -->
+					<div id="responsive-nav">
+						<!-- NAV -->
+						<ul class="main-nav nav navbar-nav">
+							<li class="active"><a href="/">Início</a></li>
+							<li><a href="/loja/store_product">Loja</a></li>
+							<li><a href="/trace">Checar</a></li>
+							<li><a href="/checkout">Pedido</a></li>
+							@auth
+							@if ($user->role == 'admin')
+							<li><a href="/cadastrar_produto">Cadastrar produto</a></li>
+							<li><a href="/produto_lista">Visulizar produtos</a></li>
+							<li><a href="#">Painel admin</a></li>
+							@endif
+							@endauth
+						</ul>
+						<!-- /NAV -->
+					</div>
+					<!-- /responsive-nav -->
+				</div>
+				<!-- /container -->
+			</nav>
+			<!-- /NAVIGATION -->
+			@yield ('content')
 		</main>
+
         <footer id="footer">
 			<!-- top footer -->
 			<div class="section">
