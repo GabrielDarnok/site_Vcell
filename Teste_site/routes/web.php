@@ -30,7 +30,7 @@ Route::get('/loja/store_product',[ProductController::class, 'store_product']);
 
 Route::get('/busca/busca_product', [ProductController::class, 'busca_product'])->name('busca.busca_product');
 
-Route::get('/checkout',[RedirectController::class, 'checkout']);
+Route::get('/checkout',[ProductController::class, 'checkout']);
 
 Route::get('/trace',[RedirectController::class, 'trace']);
 

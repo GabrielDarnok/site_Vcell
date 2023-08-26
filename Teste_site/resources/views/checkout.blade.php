@@ -132,18 +132,54 @@
 						</div>
 						<div class="order-summary">
 							<div class="order-col">
-								<div><strong>Produto</strong></div>
+								<div><strong>Produto(s)</strong></div>
 								<div><strong>Total</strong></div>
 							</div>
 							<div class="order-products">
-								<div class="order-col">
-									<div>Titulo produto</div>
-									<div>R$149,90</div>
+								@if(isset($ProductsAsCarrinho))
+								@if ($ProductsAsCarrinho->isEmpty())
+								<p>Carrinho vazio</p>
+								@else
+								@foreach ($ProductsAsCarrinho as $ProductsAsCarrinhos)
+								<div class="product-img">
+									<img src="/img/product/{{ $ProductsAsCarrinhos->imagem_produto }}" alt="">
 								</div>
 								<div class="order-col">
-									<div>Titulo produto</div>
-									<div>R$179,70 (3x)</div>
+									<div class="product-name">
+										<a href="/produto/{{ $ProductsAsCarrinhos->id }}">{{ $ProductsAsCarrinhos->nome_produto }}</a>
+										<p class="product-price"><span class="qty"></span>R$ {{number_format($ProductsAsCarrinhos->valor,2, ',', '.')}}</p>
+										<p>Quantidade: {{ $ProductsAsCarrinhos->pivot->quantidade_produto }}</p>
+									</div>
+									<form class="deleteForm" id="deleteForm" action="/produto/leave/{{ $ProductsAsCarrinhos->id }}" method="POST">
+										@csrf
+										@method("DELETE")
+										<button class="delete"><i class="fa fa-close"></i></button>
+									</form>
 								</div>
+								@endforeach
+								<script>
+									document.addEventListener("DOMContentLoaded", function() {
+										const deleteForms = document.querySelectorAll(".deleteForm");
+
+										deleteForms.forEach(deleteForm => {
+										const deleteButton = deleteForm.querySelector(".delete");
+										const productId = deleteButton.getAttribute("data-product-id");
+
+										deleteButton.addEventListener("click", function(event) {
+										event.preventDefault();
+
+										const confirmation = confirm("Tem certeza que deseja remover o produto do carrinho?");
+											if (confirmation) {
+												deleteForm.submit();
+												}
+											});
+										});
+									});
+								</script>
+								@endif
+								@else
+								<p>Carrinho vazio</p>
+								@endif
 							</div>
 							<div class="order-col">
 								<div>Frete</div>
@@ -151,7 +187,7 @@
 							</div>
 							<div class="order-col">
 								<div><strong>Total</strong></div>
-								<div><strong class="order-total">R$689,00</strong></div>
+								<div><strong class="order-total">R${{ number_format($subtotal, 2, ',', '.') }}</strong></div>
 							</div>
 						</div>
 						<div class="payment-method">

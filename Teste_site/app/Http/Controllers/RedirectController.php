@@ -8,20 +8,6 @@ use App\Models\Products;
 
 class RedirectController extends Controller
 {    
-    #Retornando a pagina Checkout ao usuario
-    public function checkout (){
-        $user = auth()->user();
-        $subtotal = 0;
-        if ($user) {
-            $ProductsAsCarrinho = $user->ProductsAsCarrinho;
-            foreach ($ProductsAsCarrinho as $product) {
-                $subtotal += $product->pivot->quantidade_produto * $product->valor;
-            }
-            return view('checkout',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'user' => $user]);
-        }
-        return view('checkout', ['user' => $user]);
-    }
-
     #Retornando a pagina trace ao usuario
     public function trace (){
         $user = auth()->user();

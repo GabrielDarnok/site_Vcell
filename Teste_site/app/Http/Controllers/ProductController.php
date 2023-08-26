@@ -277,4 +277,18 @@ class ProductController extends Controller
 
         return redirect('/')->with('msg', 'Produto(s) removido do carrinho');
     }
+
+    #Retornando a pagina Checkout ao usuario
+    public function checkout (){
+        $user = auth()->user();
+        $subtotal = 0;
+        if ($user) {
+            $ProductsAsCarrinho = $user->ProductsAsCarrinho;
+            foreach ($ProductsAsCarrinho as $product) {
+                $subtotal += $product->pivot->quantidade_produto * $product->valor;
+            }
+            return view('checkout',['ProductsAsCarrinho'=>$ProductsAsCarrinho, 'subtotal'=>$subtotal, 'user' => $user]);
+        }
+        return view('checkout', ['user' => $user]);
+    }
 }
